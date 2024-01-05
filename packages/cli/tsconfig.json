@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "target": "ESNext"
+  },
+  "extends": "../../tsconfig.json",
+}

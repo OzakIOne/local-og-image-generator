@@ -1,0 +1,44 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:node/recommended",
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "node/no-unsupported-features/es-syntax": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "node/no-extraneous-import": "warn",
+    "node/no-unsupported-features/node-builtins": "warn"
+  },
+  "env": {
+    "node": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "alias": {
+        "map": [
+          [
+            "@ozaki",
+            "./packages"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+  }
+}
