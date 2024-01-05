@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "react": "^18.2.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint-import-resolver-node": "^0.3.9"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "name": "ozaki",
+  "scripts": {
+    "cli:dev": "pnpm --filter ./packages/cli run twatch",
+    "cli:start": "pnpm --filter ./packages/cli run ts",
+    "lint": "pnpm --stream -r run lint",
+    "web:build": "pnpm --filter ./packages/web run build",
+    "web:dev": "pnpm --filter ./packages/web run dev",
+    "web:start": "pnpm --filter ./packages/web run start"
+  },
+  "version": "1.0.0"
+}
