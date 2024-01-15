@@ -9,7 +9,6 @@ import {
 } from '@ozaki/shared';
 import type {SVGProps, SVGType} from '@ozaki/shared';
 import React from 'react';
-import {writeFileSync} from 'fs';
 
 type SVGParams = {
   props: SVGProps;
@@ -44,7 +43,7 @@ const generateSvg = async ({props, type}: SVGParams): Promise<string> => {
 };
 
 /**
- * Transform a SVG file to a PNG
+ * Transform a SVG to a PNG
  * @date 1/15/2024 - 2:01:15 PM
  *
  * @async
@@ -58,11 +57,11 @@ async function generatePng(svg: string): Promise<Buffer> {
 }
 
 /**
- * Generate the OG images for the blog and docs pages
+ * Generate the OG images
  * @date 1/2/2024 - 3:50:28 PM
  *
  * @async
- * @returns {Promise<void>}
+ * @returns {Promise<Buffer>}
  */
 async function generateOgImages({
   type,
@@ -83,14 +82,13 @@ async function generateOgImages({
   return generatePng(svg);
 }
 
-const a = await generateOgImages({
-  type: 'default',
-  props: {
-    title: 'Ozakqwei',
-    description: 'My custom description',
-    moto: 'Some random moto',
-  },
-});
+// const a = await generateOgImages({
+//   type: 'default',
+//   props: {
+//     title: 'e',
+//     description: 'test',
+//   },
+// });
+// writeFileSync('test.png', a);
 
-// write a to disk
-writeFileSync('./tests.png', a);
+export {generateOgImages};

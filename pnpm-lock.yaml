@@ -42,6 +42,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@ozaki/generate':
+        specifier: workspace:^
+        version: link:../generate
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared

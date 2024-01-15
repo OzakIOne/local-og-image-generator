@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ozaki/generate": "workspace:^",
     "@ozaki/shared": "workspace:^",
     "@resvg/resvg-js": "^2.6.0",
     "@types/node": "^20.10.6",
@@ -12,15 +13,14 @@
     "satori": "^0.10.11",
     "tsx": "^4.7.0"
   },
-  "description": "",
   "main": "src/index.tsx",
   "name": "@ozaki/cli",
   "scripts": {
     "format": "prettier --write src/*.tsx",
     "lint": "eslint src/*.tsx",
     "lint:fix": "eslint src/*.tsx --fix",
-    "ts": "tsx src/index.tsx",
-    "twatch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
+    "start": "tsx src/index.tsx",
+    "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
   },
   "type": "module",
   "version": "1.0.0"

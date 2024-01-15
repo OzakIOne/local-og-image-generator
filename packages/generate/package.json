@@ -1,16 +1,12 @@
 {
-  "name": "generate",
+  "name": "@ozaki/generate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "type": "module",
   "scripts": {
     "start": "tsx src/index.tsx",
     "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@ozaki/shared": "workspace:^",
     "@resvg/resvg-js": "^2.6.0",

@@ -3,8 +3,9 @@ import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
 import React from 'react';
 import type {CSSProperties} from 'react';
+import {defaultNode, docNode, blogNode} from './nodes';
 
-const fontPath = './src/Roboto-Regular.ttf';
+const fontPath = './src/Pacifico.ttf';
 
 const globalConfig = {
   satoriWidth: 1200,
@@ -126,150 +127,14 @@ type SVGProps = {
 
 type SVGType = 'doc' | 'blog' | 'default';
 
-const defaultNode = (props: SVGProps) => (
-  <div style={defaultStyle}>
-    <div
-      style={{
-        display: 'flex',
-        fontSize: '6rem',
-        fontWeight: 'bold',
-        justifyContent: 'center',
-      }}>
-      {props.title || 'Docusaurus'}
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      {docusaurusLogoSvg(300)}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginLeft: '2rem',
-        }}>
-        <div
-          style={{
-            display: 'flex',
-            fontWeight: 'bold',
-            fontSize: '4rem',
-            color: 'gray',
-            marginBottom: '2rem',
-          }}>
-          {props.description || 'Build optimized websites'}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            color: 'gray',
-            fontSize: '3rem',
-          }}>
-          {props.moto || 'Focus on your content'}
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const docNode = (props: SVGProps) => (
-  <div style={docStyle}>
-    <div
-      style={{
-        display: 'flex',
-        fontSize: '6rem',
-        fontWeight: 'bold',
-        alignItems: 'center',
-        marginTop: '2rem',
-        marginLeft: '2rem',
-      }}>
-      {docusaurusLogoSvg(150)}
-      {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-      }}>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginLeft: '2rem',
-        }}>
-        <div
-          style={{
-            display: 'flex',
-            color: 'gray',
-            fontSize: '3rem',
-          }}>
-          {props.description && <div>{props.description}</div>}
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const blogNode = (props: SVGProps) => (
-  <div style={docStyle}>
-    <div
-      style={{
-        display: 'flex',
-        fontSize: '6rem',
-        fontWeight: 'bold',
-        alignItems: 'center',
-        marginTop: '2rem',
-        marginLeft: '2rem',
-      }}>
-      {docusaurusLogoSvg(150)}
-      {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        marginTop: '4rem',
-      }}>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          marginLeft: '2rem',
-        }}>
-        <div
-          style={{
-            display: 'flex',
-            color: 'gray',
-            fontSize: '3rem',
-          }}>
-          {props.authorURL && (
-            <img
-              src={props.authorURL}
-              style={{width: 64, borderRadius: 50}}
-              alt="Author profile picture"
-            />
-          )}
-          {props.author && (
-            <div style={{display: 'flex', alignItems: 'center'}}>
-              {props.author}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 export {
   satoriOptions,
   docusaurusLogoSvg,
   defaultStyle,
   docStyle,
   ResvgOptions,
+  defaultNode,
   docNode,
   blogNode,
-  defaultNode,
 };
 export type {SVGProps, SVGType};
