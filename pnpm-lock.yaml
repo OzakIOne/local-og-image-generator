@@ -76,6 +76,21 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
 
+  packages/generate:
+    dependencies:
+      '@ozaki/shared':
+        specifier: workspace:^
+        version: link:../shared
+      '@resvg/resvg-js':
+        specifier: ^2.6.0
+        version: 2.6.0
+      satori:
+        specifier: ^0.10.11
+        version: 0.10.11
+      tsx:
+        specifier: ^4.7.0
+        version: 4.7.0
+
   packages/shared:
     dependencies:
       '@resvg/resvg-js':
