@@ -11,7 +11,7 @@
     "typescript": "^4.9.5"
   },
   "engines": {
-    "node": "21.x"
+    "node": "18.x"
   },
   "name": "@ozaki/web",
   "scripts": {
