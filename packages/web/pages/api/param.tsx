@@ -147,7 +147,9 @@ const blogNode = (props: SVGProps) => (
           }}>
           {props.authorURL && (
             <img
-              src={props.authorURL}
+              width={64}
+              height={64}
+              src={'https://github.com/' + props.authorURL + '.png'}
               style={{width: 64, borderRadius: 50}}
               alt="Author profile picture"
             />
