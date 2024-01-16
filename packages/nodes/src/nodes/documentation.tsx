@@ -1,5 +1,7 @@
 import React from 'react';
-import {SVGProps, docStyle, docusaurusLogoSvg} from '../options';
+import {SVGProps} from '@ozaki/shared';
+import {docStyle} from './style/docstyle';
+import {docusaurusLogoSvg} from './logo';
 
 const docNode = (props: SVGProps) => (
   <div style={docStyle}>

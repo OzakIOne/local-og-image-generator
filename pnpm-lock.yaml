@@ -87,12 +87,21 @@ importers:
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.0
+      '@vercel/og':
+        specifier: ^0.6.2
+        version: 0.6.2
       satori:
         specifier: ^0.10.11
         version: 0.10.11
       tsx:
         specifier: ^4.7.0
         version: 4.7.0
+
+  packages/nodes:
+    dependencies:
+      '@ozaki/shared':
+        specifier: workspace:^
+        version: link:../shared
 
   packages/shared:
     dependencies:
@@ -105,6 +114,12 @@ importers:
 
   packages/web:
     dependencies:
+      '@ozaki/generate':
+        specifier: workspace:^
+        version: link:../generate
+      '@ozaki/nodes':
+        specifier: workspace:^
+        version: link:../nodes
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared

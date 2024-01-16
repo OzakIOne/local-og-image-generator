@@ -1,0 +1,8 @@
+{
+  "name": "@ozaki/nodes",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@ozaki/shared": "workspace:^"
+  }
+}

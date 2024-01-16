@@ -3,12 +3,14 @@ import {Resvg} from '@resvg/resvg-js';
 import {
   satoriOptions,
   ResvgOptions,
+  // TODO pass them as parameters, not depedencies
   docNode,
   blogNode,
   defaultNode,
 } from '@ozaki/shared';
 import type {SVGProps, SVGType} from '@ozaki/shared';
 import React from 'react';
+// import {writeFileSync} from 'node:fs';
 
 type SVGParams = {
   props: SVGProps;
@@ -63,6 +65,8 @@ async function generatePng(svg: string): Promise<Buffer> {
  * @async
  * @returns {Promise<Buffer>}
  */
+// TODO remove s from image and remove OG
+// TODO await generateImage(<BlogPostImage title="Blog title" description="Blog description" author="Clément"/>)
 async function generateOgImages({
   type,
   props,
@@ -71,11 +75,13 @@ async function generateOgImages({
   props: SVGProps;
 }): Promise<Buffer> {
   const svg = await generateSvg({
+    // pass the node and not props
     props: {
       title: props.title,
       author: props.author,
       authorURL: props.authorURL,
       description: props.description,
+      moto: props.moto,
     },
     type: type,
   });
@@ -83,7 +89,7 @@ async function generateOgImages({
 }
 
 // const a = await generateOgImages({
-//   type: 'default',
+//   type: 'blog',
 //   props: {
 //     title: 'e',
 //     description: 'test',
