@@ -1,6 +1,10 @@
 import React from 'react';
 import {SVGProps, docStyle, docusaurusLogoSvg} from '../options';
 
+function checkAuthorImage(authorURL: string): boolean {
+  return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
+}
+
 const blogNode = (props: SVGProps) => (
   <div style={docStyle}>
     <div
@@ -33,9 +37,12 @@ const blogNode = (props: SVGProps) => (
             color: 'gray',
             fontSize: '3rem',
           }}>
-          {props.authorURL && (
+          {checkAuthorImage(props.authorURL) && (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={props.authorURL}
+              height={64}
+              width={64}
               style={{width: 64, borderRadius: 50}}
               alt="Author profile picture"
             />

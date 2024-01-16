@@ -7,6 +7,10 @@ export const config = {
   runtime: 'edge',
 };
 
+function checkAuthorImage(authorURL: string): boolean {
+  return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
+}
+
 const defaultStyle: CSSProperties = {
   minWidth: '100%',
   minHeight: '100%',
@@ -145,11 +149,12 @@ const blogNode = (props: SVGProps) => (
             color: 'gray',
             fontSize: '3rem',
           }}>
-          {props.authorURL && (
+          {checkAuthorImage(props.authorURL) && (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               width={64}
               height={64}
-              src={'https://github.com/' + props.authorURL + '.png'}
+              src={props.authorURL}
               style={{width: 64, borderRadius: 50}}
               alt="Author profile picture"
             />
@@ -165,11 +170,6 @@ const blogNode = (props: SVGProps) => (
   </div>
 );
 
-// const font = fetch(new URL('../../assets/TYPEWR__.TTF', import.meta.url)).then(
-//   (res) => res.arrayBuffer(),
-// );
-
-// const docusaurusLogoSvg: ReactNode = (
 const docusaurusLogoSvg = (size: number): ReactNode => (
   <svg
     width={size}
@@ -226,8 +226,12 @@ const docusaurusLogoSvg = (size: number): ReactNode => (
   </svg>
 );
 
+const font = fetch(
+  new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
+).then((res) => res.arrayBuffer());
+
 export default async function handler(req: NextRequest) {
-  // const fontData = await font;
+  const fontData = await font;
   try {
     const {searchParams} = new URL(req.url);
 
@@ -249,7 +253,7 @@ export default async function handler(req: NextRequest) {
     const author = getParam({name: 'author', defaultValue: 'ozakione'});
     const authorURL = getParam({
       name: 'authorurl',
-      defaultValue: 'ozakione',
+      defaultValue: 'https://github.com/ozakione.png',
     });
     const type = getParam({name: 'type', defaultValue: 'default'}) as SVGType;
     const props: SVGProps = {
@@ -272,27 +276,19 @@ export default async function handler(req: NextRequest) {
               default:
                 return defaultNode(props);
             }
-            // switch (type) {
-            //   case 'doc':
-            //     return <div>Hello</div>;
-            //   case 'blog':
-            //     return <div>Hello</div>;
-            //   default:
-            //     return <div>Hello</div>;
-            // }
           })()}
         </div>
       ),
       {
         width: 1200,
         height: 630,
-        // fonts: [
-        //   {
-        //     name: 'Typewriter',
-        //     data: fontData,
-        //     style: 'normal',
-        //   },
-        // ],
+        fonts: [
+          {
+            name: 'Roboto',
+            data: fontData,
+            style: 'normal',
+          },
+        ],
         emoji: 'twemoji',
         debug: true,
       },
