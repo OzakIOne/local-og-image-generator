@@ -1,5 +1,5 @@
 import {cac} from 'cac';
-import type {SVGType} from '@ozaki/shared';
+import type {ImageType} from '@ozaki/shared';
 import {generateOgImages} from '@ozaki/generate';
 import {writeFile} from 'fs';
 
@@ -22,7 +22,7 @@ const parsed = cli.parse();
 
 if (typeof parsed.options.output === 'string') {
   const png = await generateOgImages({
-    type: parsed.options.type as SVGType,
+    type: parsed.options.type as ImageType,
     props: {
       title: parsed.options.title as string,
       description: parsed.options.description as string,

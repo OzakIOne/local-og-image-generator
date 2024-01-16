@@ -8,13 +8,13 @@ import {
   blogNode,
   defaultNode,
 } from '@ozaki/shared';
-import type {SVGProps, SVGType} from '@ozaki/shared';
+import type {ImageProps, ImageType} from '@ozaki/shared';
 import React from 'react';
 // import {writeFileSync} from 'node:fs';
 
 type SVGParams = {
-  props: SVGProps;
-  type: SVGType;
+  props: ImageProps;
+  type: ImageType;
 };
 
 /**
@@ -22,8 +22,8 @@ type SVGParams = {
  * @date 1/2/2024 - 3:50:29 PM
  *
  * @async
- * @param {SVGProps} param0.props
- * @param {SVGType} param0.type
+ * @param {ImageProps} param0.props
+ * @param {ImageType} param0.type
  * @returns {Promise<void>}
  */
 const generateSvg = async ({props, type}: SVGParams): Promise<string> => {
@@ -71,8 +71,8 @@ async function generateOgImages({
   type,
   props,
 }: {
-  type: SVGType;
-  props: SVGProps;
+  type: ImageType;
+  props: ImageProps;
 }): Promise<Buffer> {
   const svg = await generateSvg({
     // pass the node and not props

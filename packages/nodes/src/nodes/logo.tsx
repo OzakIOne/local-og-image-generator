@@ -57,4 +57,4 @@ const DocusaurusLogo = (props): ReactNode => (
   </svg>
 );
 
-export {DocusaurusLogo as DocusaurusLogoSvg};
+export {DocusaurusLogo};

@@ -1,6 +1,6 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
-import type {SVGProps, SVGType} from '@ozaki/shared';
+import type {ImageProps, ImageType} from '@ozaki/shared';
 import {docNode, defaultNode, blogNode} from '@ozaki/nodes';
 
 export const config = {
@@ -40,8 +40,8 @@ export default async function handler(req: NextRequest) {
       name: 'moto',
       defaultValue: 'Focus on your content',
     });
-    const type = getParam({name: 'type', defaultValue: 'default'}) as SVGType;
-    const props: SVGProps = {
+    const type = getParam({name: 'type', defaultValue: 'default'}) as ImageType;
+    const props: ImageProps = {
       title,
       description,
       author,

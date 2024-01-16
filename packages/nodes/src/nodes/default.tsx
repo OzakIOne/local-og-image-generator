@@ -1,9 +1,9 @@
 import React from 'react';
-import {SVGProps} from '@ozaki/shared';
+import {ImageProps} from '@ozaki/shared';
 import {defaultStyle} from './style/defaultstyle';
 import {DocusaurusLogoSvg} from './logo';
 
-const defaultNode = (props: SVGProps) => (
+const defaultNode = (props: ImageProps) => (
   <div style={defaultStyle}>
     <div
       style={{

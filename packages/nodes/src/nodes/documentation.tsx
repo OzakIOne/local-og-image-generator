@@ -1,9 +1,9 @@
 import React from 'react';
-import {SVGProps} from '@ozaki/shared';
+import {ImageProps} from '@ozaki/shared';
 import {docStyle} from './style/docstyle';
 import {DocusaurusLogo} from './logo';
 
-const docNode = (props: SVGProps) => (
+const docNode = (props: ImageProps) => (
   <div style={docStyle}>
     <div
       style={{

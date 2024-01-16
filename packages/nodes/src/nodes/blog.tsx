@@ -1,5 +1,5 @@
 import React from 'react';
-import {SVGProps} from '@ozaki/shared';
+import {ImageProps} from '@ozaki/shared';
 import {docStyle} from './style/docstyle';
 import {DocusaurusLogo} from './logo';
 
@@ -7,7 +7,7 @@ function checkAuthorImage(authorURL: string): boolean {
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
 }
 
-const blogNode = (props: SVGProps) => (
+const blogNode = (props: ImageProps) => (
   <div style={docStyle}>
     <div
       style={{

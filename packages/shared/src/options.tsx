@@ -1,8 +1,6 @@
 import type {ResvgRenderOptions} from '@resvg/resvg-js';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
-import React from 'react';
-import {defaultNode, docNode, blogNode} from '../../nodes/src';
 
 const fontPath = process.env.OG_FONT || './src/Roboto-Regular.ttf';
 
@@ -38,7 +36,7 @@ const ResvgOptions: ResvgRenderOptions = {
   },
 };
 
-type SVGProps = {
+type ImageProps = {
   title?: string;
   description?: string;
   moto?: string;
@@ -46,7 +44,7 @@ type SVGProps = {
   authorURL?: string;
 };
 
-type SVGType = 'doc' | 'blog' | 'default';
+type ImageType = 'doc' | 'blog' | 'default';
 
-export {satoriOptions, ResvgOptions, defaultNode, docNode, blogNode};
-export type {SVGProps, SVGType};
+export {satoriOptions, ResvgOptions};
+export type {ImageProps, ImageType};
