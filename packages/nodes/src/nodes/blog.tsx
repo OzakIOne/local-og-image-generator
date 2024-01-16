@@ -1,7 +1,7 @@
 import React from 'react';
 import {SVGProps} from '@ozaki/shared';
 import {docStyle} from './style/docstyle';
-import {docusaurusLogoSvg} from './logo';
+import {DocusaurusLogo} from './logo';
 
 function checkAuthorImage(authorURL: string): boolean {
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
@@ -18,7 +18,7 @@ const blogNode = (props: SVGProps) => (
         marginTop: '2rem',
         marginLeft: '2rem',
       }}>
-      {docusaurusLogoSvg(150)}
+      <DocusaurusLogo size={150} />
       {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
     </div>
     <div

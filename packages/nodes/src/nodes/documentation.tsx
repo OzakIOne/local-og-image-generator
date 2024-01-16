@@ -1,7 +1,7 @@
 import React from 'react';
 import {SVGProps} from '@ozaki/shared';
 import {docStyle} from './style/docstyle';
-import {docusaurusLogoSvg} from './logo';
+import {DocusaurusLogo} from './logo';
 
 const docNode = (props: SVGProps) => (
   <div style={docStyle}>
@@ -14,7 +14,7 @@ const docNode = (props: SVGProps) => (
         marginTop: '2rem',
         marginLeft: '2rem',
       }}>
-      {docusaurusLogoSvg(150)}
+      <DocusaurusLogo size={150} />
       {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
     </div>
     <div

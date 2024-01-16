@@ -1,10 +1,10 @@
 import React from 'react';
 import type {ReactNode} from 'react';
 
-const docusaurusLogoSvg = (size: number): ReactNode => (
+const DocusaurusLogo = (props): ReactNode => (
   <svg
-    width={size}
-    height={size}
+    width={props.size}
+    height={props.size}
     viewBox="0 0 200 200"
     xmlns="http://www.w3.org/2000/svg">
     <g fill="none" fill-rule="evenodd">
@@ -57,4 +57,4 @@ const docusaurusLogoSvg = (size: number): ReactNode => (
   </svg>
 );
 
-export {docusaurusLogoSvg};
+export {DocusaurusLogo as DocusaurusLogoSvg};

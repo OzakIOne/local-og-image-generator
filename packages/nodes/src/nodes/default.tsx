@@ -1,7 +1,7 @@
 import React from 'react';
 import {SVGProps} from '@ozaki/shared';
 import {defaultStyle} from './style/defaultstyle';
-import {docusaurusLogoSvg} from './logo';
+import {DocusaurusLogoSvg} from './logo';
 
 const defaultNode = (props: SVGProps) => (
   <div style={defaultStyle}>
@@ -21,7 +21,7 @@ const defaultNode = (props: SVGProps) => (
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      {docusaurusLogoSvg(300)}
+      <DocusaurusLogoSvg size={300} />
       <div
         style={{
           display: 'flex',
