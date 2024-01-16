@@ -12,15 +12,6 @@ type SVGParams = {
   type: ImageType;
 };
 
-/**
- * Generate SVG from a ReactNode
- * @date 1/2/2024 - 3:50:29 PM
- *
- * @async
- * @param {ImageProps} param0.props
- * @param {ImageType} param0.type
- * @returns {Promise<void>}
- */
 const generateSvg = async ({props, type}: SVGParams): Promise<string> => {
   return satori(
     <div style={{display: 'flex'}}>
@@ -51,30 +42,14 @@ const generateSvg = async ({props, type}: SVGParams): Promise<string> => {
   );
 };
 
-/**
- * Transform a SVG to a PNG
- * @date 1/15/2024 - 2:01:15 PM
- *
- * @async
- * @param {string} svg
- * @returns {Promise<Buffer>}
- */
 async function generatePng(svg: string): Promise<Buffer> {
   const resvg = new Resvg(svg, ResvgOptions);
   const pngData = resvg.render();
   return pngData.asPng();
 }
 
-/**
- * Generate the OG images
- * @date 1/2/2024 - 3:50:28 PM
- *
- * @async
- * @returns {Promise<Buffer>}
- */
-// TODO remove s from image and remove OG
 // TODO await generateImage(<BlogPostImage title="Blog title" description="Blog description" author="Clément"/>)
-async function generateOgImages({
+async function generateImage({
   type,
   props,
 }: {
@@ -95,7 +70,7 @@ async function generateOgImages({
   return generatePng(svg);
 }
 
-// const a = await generateOgImages({
+// const a = await generateImage({
 //   type: 'blog',
 //   props: {
 //     title: 'e',
@@ -104,4 +79,4 @@ async function generateOgImages({
 // });
 // writeFileSync('test.png', a);
 
-export {generateOgImages};
+export {generateImage};

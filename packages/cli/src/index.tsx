@@ -1,6 +1,6 @@
 import {cac} from 'cac';
 import type {ImageType} from '@ozaki/shared';
-import {generateOgImages} from '@ozaki/generate';
+import {generateImage} from '@ozaki/generate';
 import {writeFile} from 'fs';
 
 const cli = cac('docusaurus-cli-og-image-generator');
@@ -22,7 +22,7 @@ const parsed = cli.parse();
 
 if (typeof parsed.options.output === 'string') {
   // await generateImage(<BlogPostImage title="Blog title" description="Blog description" author="Clément"/>)
-  const png = await generateOgImages({
+  const png = await generateImage({
     type: parsed.options.type as ImageType,
     props: {
       title: parsed.options.title as string,
