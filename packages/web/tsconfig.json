@@ -12,6 +12,7 @@
       "esnext"
     ],
     "module": "esnext",
+    "allowImportingTsExtensions": true,
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
