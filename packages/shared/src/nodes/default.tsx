@@ -10,7 +10,7 @@ const defaultNode = (props: SVGProps) => (
         fontWeight: 'bold',
         justifyContent: 'center',
       }}>
-      {props.title || 'Docusaurus'}
+      {props.title && <div>{props.title}</div>}
     </div>
     <div
       style={{
@@ -34,7 +34,7 @@ const defaultNode = (props: SVGProps) => (
             color: 'gray',
             marginBottom: '2rem',
           }}>
-          {props.description || 'Build optimized websites'}
+          {props.description && <div>{props.description}</div>}
         </div>
         <div
           style={{
@@ -42,7 +42,7 @@ const defaultNode = (props: SVGProps) => (
             color: 'gray',
             fontSize: '3rem',
           }}>
-          {props.moto || 'Focus on your content'}
+          {props.moto && <div>{props.moto}</div>}
         </div>
       </div>
     </div>

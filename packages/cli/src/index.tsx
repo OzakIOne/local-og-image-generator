@@ -5,7 +5,7 @@ import {writeFile} from 'fs';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli
-  .option('--path <name>', 'Choose a path to generate the OG images')
+  .option('--output <path>', 'Choose a path where to generate the OG images')
   .option(
     '--type <doc | blog | default>',
     'Choose which type of OG image to generate',
@@ -13,17 +13,14 @@ cli
   .option('--title <name>', 'Choose a title')
   .option('--author <name>', 'Choose an author')
   .option('--authorURL <name>', 'Choose an author URL')
-  .option('--description <name>', 'Choose a description');
+  .option('--description <name>', 'Choose a description')
+  .option('--moto <name>', 'Choose a moto');
 
 cli.help();
 cli.version('0.0.1');
 const parsed = cli.parse();
-console.log('parsed:', parsed);
 
-if (
-  typeof parsed.options.path === 'string' &&
-  typeof parsed.options.type === 'string'
-) {
+if (typeof parsed.options.path === 'string') {
   const png = await generateOgImages({
     type: parsed.options.type as SVGType,
     props: {
@@ -31,6 +28,7 @@ if (
       description: parsed.options.description as string,
       author: parsed.options.author as string,
       authorURL: parsed.options.authorURL as string,
+      moto: parsed.options.moto as string,
     },
   });
   writeFile(parsed.options.path, png, (err) => {
