@@ -1,13 +1,7 @@
 import satori from 'satori';
 import {Resvg} from '@resvg/resvg-js';
 import {satoriOptions, ResvgOptions} from '@ozaki/shared';
-import type {ImageProps, ImageType} from '@ozaki/shared';
 import React, {ReactNode} from 'react';
-
-type SVGParams = {
-  props: ImageProps;
-  type: ImageType;
-};
 
 const generateSvg = async (Node: ReactNode): Promise<string> => {
   return satori(<div style={{display: 'flex'}}>{Node}</div>, satoriOptions);
