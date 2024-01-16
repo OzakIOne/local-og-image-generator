@@ -87,9 +87,6 @@ importers:
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.0
-      '@vercel/og':
-        specifier: ^0.6.2
-        version: 0.6.2
       satori:
         specifier: ^0.10.11
         version: 0.10.11
