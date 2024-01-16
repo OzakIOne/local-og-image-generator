@@ -1,7 +1,8 @@
 import {cac} from 'cac';
-import type {ImageType} from '@ozaki/shared';
 import {generateImage} from '@ozaki/generate';
 import {writeFile} from 'fs';
+import {Doc, Blog, Default} from '@ozaki/nodes';
+import React from 'react';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli
@@ -22,16 +23,31 @@ const parsed = cli.parse();
 
 if (typeof parsed.options.output === 'string') {
   // await generateImage(<BlogPostImage title="Blog title" description="Blog description" author="Clément"/>)
-  const png = await generateImage({
-    type: parsed.options.type as ImageType,
-    props: {
-      title: parsed.options.title as string,
-      description: parsed.options.description as string,
-      author: parsed.options.author as string,
-      authorURL: parsed.options.authorURL as string,
-      moto: parsed.options.moto as string,
-    },
-  });
+  let png = null;
+  if (parsed.options.type === 'doc') {
+    png = await generateImage(
+      <Doc
+        title={parsed.options.title}
+        description={parsed.options.description}
+      />,
+    );
+  } else if (parsed.options.type === 'blog') {
+    png = await generateImage(
+      <Blog
+        title={parsed.options.title}
+        author={parsed.options.author}
+        authorURL={parsed.options.authorURL}
+      />,
+    );
+  } else {
+    png = await generateImage(
+      <Default
+        title={parsed.options.title}
+        description={parsed.options.description}
+        moto={parsed.options.moto}
+      />,
+    );
+  }
   writeFile(parsed.options.output, png, (err) => {
     if (err) {
       throw err;

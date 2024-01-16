@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@ozaki/generate": "workspace:^",
     "@ozaki/nodes": "workspace:^",
     "@ozaki/shared": "workspace:^",
     "@vercel/og": "latest",
@@ -8,7 +7,6 @@
     "react-dom": "latest"
   },
   "devDependencies": {
-    "eslint-config-next": "^14.0.4",
     "typescript": "5.3.3"
   },
   "engines": {
