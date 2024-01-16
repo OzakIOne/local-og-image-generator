@@ -5,7 +5,7 @@ import React from 'react';
 import type {CSSProperties} from 'react';
 import {defaultNode, docNode, blogNode} from './nodes';
 
-const fontPath = './src/Pacifico.ttf';
+const fontPath = process.env.OG_FONT || './src/Roboto-Regular.ttf';
 
 const globalConfig = {
   satoriWidth: 1200,

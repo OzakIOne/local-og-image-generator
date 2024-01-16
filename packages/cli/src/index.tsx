@@ -20,7 +20,7 @@ cli.help();
 cli.version('0.0.1');
 const parsed = cli.parse();
 
-if (typeof parsed.options.path === 'string') {
+if (typeof parsed.options.output === 'string') {
   const png = await generateOgImages({
     type: parsed.options.type as SVGType,
     props: {
@@ -31,12 +31,12 @@ if (typeof parsed.options.path === 'string') {
       moto: parsed.options.moto as string,
     },
   });
-  writeFile(parsed.options.path, png, (err) => {
+  writeFile(parsed.options.output, png, (err) => {
     if (err) {
       throw err;
     }
     console.log('The file has been saved!');
   });
 } else {
-  throw new Error('Please specify a path and a type');
+  throw new Error('Please specify a output path and a type');
 }
