@@ -1,7 +1,7 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
 import type {ImageProps, ImageType} from '@ozaki/shared';
-import {docNode, defaultNode, blogNode} from '@ozaki/nodes';
+import {Doc, Default, Blog} from '@ozaki/nodes';
 
 export const config = {
   runtime: 'edge',
@@ -55,11 +55,25 @@ export default async function handler(req: NextRequest) {
           {(() => {
             switch (type) {
               case 'doc':
-                return docNode(props);
+                return (
+                  <Doc title={props.title} description={props.description} />
+                );
               case 'blog':
-                return blogNode(props);
+                return (
+                  <Blog
+                    title={props.title}
+                    author={props.author}
+                    authorURL={props.authorURL}
+                  />
+                );
               default:
-                return defaultNode(props);
+                return (
+                  <Default
+                    title={props.title}
+                    description={props.description}
+                    moto={props.moto}
+                  />
+                );
             }
           })()}
         </div>
