@@ -8,6 +8,7 @@
     "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
   },
   "dependencies": {
+    "@ozaki/nodes": "workspace:^",
     "@ozaki/shared": "workspace:^",
     "@resvg/resvg-js": "^2.6.0",
     "satori": "^0.10.11",

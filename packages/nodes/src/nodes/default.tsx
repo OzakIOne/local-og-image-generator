@@ -1,9 +1,9 @@
 import React from 'react';
 import {ImageProps} from '@ozaki/shared';
 import {defaultStyle} from './style/defaultstyle';
-import {DocusaurusLogoSvg} from './logo';
+import {DocusaurusLogo} from './logo';
 
-const defaultNode = (props: ImageProps) => (
+const Default = (props: ImageProps) => (
   <div style={defaultStyle}>
     <div
       style={{
@@ -21,7 +21,7 @@ const defaultNode = (props: ImageProps) => (
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <DocusaurusLogoSvg size={300} />
+      <DocusaurusLogo size={300} />
       <div
         style={{
           display: 'flex',
@@ -51,4 +51,4 @@ const defaultNode = (props: ImageProps) => (
   </div>
 );
 
-export {defaultNode};
+export {Default};

@@ -3,7 +3,7 @@ import {ImageProps} from '@ozaki/shared';
 import {docStyle} from './style/docstyle';
 import {DocusaurusLogo} from './logo';
 
-const docNode = (props: ImageProps) => (
+const Doc = (props: ImageProps) => (
   <div style={docStyle}>
     <div
       style={{
@@ -41,4 +41,4 @@ const docNode = (props: ImageProps) => (
   </div>
 );
 
-export {docNode};
+export {Doc};

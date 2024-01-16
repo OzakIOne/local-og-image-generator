@@ -21,6 +21,7 @@ cli.version('0.0.1');
 const parsed = cli.parse();
 
 if (typeof parsed.options.output === 'string') {
+  // await generateImage(<BlogPostImage title="Blog title" description="Blog description" author="Clément"/>)
   const png = await generateOgImages({
     type: parsed.options.type as ImageType,
     props: {

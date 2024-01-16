@@ -7,7 +7,7 @@ function checkAuthorImage(authorURL: string): boolean {
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
 }
 
-const blogNode = (props: ImageProps) => (
+const Blog = (props: ImageProps) => (
   <div style={docStyle}>
     <div
       style={{
@@ -60,4 +60,4 @@ const blogNode = (props: ImageProps) => (
   </div>
 );
 
-export {blogNode};
+export {Blog};

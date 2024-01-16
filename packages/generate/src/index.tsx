@@ -1,15 +1,10 @@
 import satori from 'satori';
 import {Resvg} from '@resvg/resvg-js';
-import {
-  satoriOptions,
-  ResvgOptions,
-  // TODO pass them as parameters, not depedencies
-  docNode,
-  blogNode,
-  defaultNode,
-} from '@ozaki/shared';
+import {satoriOptions, ResvgOptions} from '@ozaki/shared';
 import type {ImageProps, ImageType} from '@ozaki/shared';
 import React from 'react';
+// TODO pass nodes as parameters, not depedencies
+import {Doc, Blog, Default} from '@ozaki/nodes';
 // import {writeFileSync} from 'node:fs';
 
 type SVGParams = {
@@ -32,11 +27,23 @@ const generateSvg = async ({props, type}: SVGParams): Promise<string> => {
       {(() => {
         switch (type) {
           case 'doc':
-            return docNode(props);
+            return <Doc title={props.title} description={props.description} />;
           case 'blog':
-            return blogNode(props);
+            return (
+              <Blog
+                title={props.title}
+                author={props.author}
+                authorURL={props.authorURL}
+              />
+            );
           default:
-            return defaultNode(props);
+            return (
+              <Default
+                title={props.title}
+                description={props.description}
+                moto={props.moto}
+              />
+            );
         }
       })()}
     </div>,

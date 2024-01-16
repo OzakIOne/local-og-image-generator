@@ -81,6 +81,9 @@ importers:
 
   packages/generate:
     dependencies:
+      '@ozaki/nodes':
+        specifier: workspace:^
+        version: link:../nodes
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared
