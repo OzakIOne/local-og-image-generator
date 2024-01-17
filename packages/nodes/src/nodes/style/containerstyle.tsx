@@ -1,6 +1,6 @@
 import {CSSProperties} from 'react';
 
-const defaultStyle: CSSProperties = {
+const containerStyle: CSSProperties = {
   minWidth: '100%',
   minHeight: '100%',
   backgroundImage:
@@ -10,4 +10,4 @@ const defaultStyle: CSSProperties = {
   flexDirection: 'column',
 };
 
-export {defaultStyle};
+export {containerStyle};

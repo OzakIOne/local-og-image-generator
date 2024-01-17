@@ -1,12 +1,12 @@
 import React from 'react';
 import {ImageProps} from '@ozaki/shared';
-import {defaultStyle} from './style/defaultstyle';
+import {containerStyle} from './style/containerstyle';
 import {DocusaurusLogo} from './logo';
 import {CenterRow} from './components/CenterRow';
 import {Footer} from './components';
 
 const Default = (props: ImageProps) => (
-  <div style={defaultStyle}>
+  <div style={containerStyle}>
     <div
       style={{
         display: 'flex',

@@ -1,11 +1,11 @@
 import React from 'react';
 import {ImageProps} from '@ozaki/shared';
-import {docStyle} from './style/docstyle';
+import {containerStyle} from './style/containerstyle';
 import {DocusaurusLogo} from './logo';
 import {Footer, Header} from './components';
 
 const Doc = (props: ImageProps) => (
-  <div style={docStyle}>
+  <div style={containerStyle}>
     <Header>
       <DocusaurusLogo size={150} />
       {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
