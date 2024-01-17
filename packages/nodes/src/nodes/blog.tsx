@@ -2,6 +2,7 @@ import React from 'react';
 import {ImageProps} from '@ozaki/shared';
 import {docStyle} from './style/docstyle';
 import {DocusaurusLogo} from './logo';
+import {AuthorImage, Footer, Header} from './components';
 
 function checkAuthorImage(authorURL: string): boolean {
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
@@ -9,18 +10,10 @@ function checkAuthorImage(authorURL: string): boolean {
 
 const Blog = (props: ImageProps) => (
   <div style={docStyle}>
-    <div
-      style={{
-        display: 'flex',
-        fontSize: '6rem',
-        fontWeight: 'bold',
-        alignItems: 'center',
-        marginTop: '2rem',
-        marginLeft: '2rem',
-      }}>
+    <Header>
       <DocusaurusLogo size={150} />
       {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
-    </div>
+    </Header>
     <div
       style={{
         display: 'flex',
@@ -33,28 +26,16 @@ const Blog = (props: ImageProps) => (
           flexDirection: 'column',
           marginLeft: '2rem',
         }}>
-        <div
-          style={{
-            display: 'flex',
-            color: 'gray',
-            fontSize: '3rem',
-          }}>
+        <Footer>
           {checkAuthorImage(props.authorURL) && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={props.authorURL}
-              height={64}
-              width={64}
-              style={{width: 64, borderRadius: 50}}
-              alt="Author profile picture"
-            />
+            <AuthorImage author={props.authorURL} />
           )}
           {props.author && (
             <div style={{display: 'flex', alignItems: 'center'}}>
               {props.author}
             </div>
           )}
-        </div>
+        </Footer>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ReactNode} from 'react';
 
-const DocusaurusLogo = (props): ReactNode => (
+const DocusaurusLogo = (props: {size: number}): ReactNode => (
   <svg
     width={props.size}
     height={props.size}

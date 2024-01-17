@@ -2,6 +2,8 @@ import React from 'react';
 import {ImageProps} from '@ozaki/shared';
 import {defaultStyle} from './style/defaultstyle';
 import {DocusaurusLogo} from './logo';
+import {CenterRow} from './components/CenterRow';
+import {Footer} from './components';
 
 const Default = (props: ImageProps) => (
   <div style={defaultStyle}>
@@ -14,13 +16,7 @@ const Default = (props: ImageProps) => (
       }}>
       {props.title && <div>{props.title}</div>}
     </div>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+    <CenterRow>
       <DocusaurusLogo size={300} />
       <div
         style={{
@@ -38,16 +34,9 @@ const Default = (props: ImageProps) => (
           }}>
           {props.description && <div>{props.description}</div>}
         </div>
-        <div
-          style={{
-            display: 'flex',
-            color: 'gray',
-            fontSize: '3rem',
-          }}>
-          {props.moto && <div>{props.moto}</div>}
-        </div>
+        <Footer>{props.moto && <div>{props.moto}</div>}</Footer>
       </div>
-    </div>
+    </CenterRow>
   </div>
 );
 
