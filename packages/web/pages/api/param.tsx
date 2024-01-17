@@ -7,25 +7,29 @@ export const config = {
   runtime: 'edge',
 };
 
-const font = fetch(
-  new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: NextRequest) {
+  const {searchParams} = new URL(req.url);
+  const getParam = ({
+    name,
+    defaultValue,
+  }: {
+    name: string;
+    defaultValue: string;
+  }): string => {
+    return searchParams.has(name) ? searchParams.get(name) : defaultValue;
+  };
+
+  const fontpath = `../../assets/${getParam({
+    name: 'font',
+    defaultValue: 'Roboto-Regular',
+  })}.ttf`;
+
+  const font = fetch(new URL(fontpath, import.meta.url)).then((res) =>
+    res.arrayBuffer(),
+  );
+
   const fontData = await font;
   try {
-    const {searchParams} = new URL(req.url);
-
-    const getParam = ({
-      name,
-      defaultValue,
-    }: {
-      name: string;
-      defaultValue: string;
-    }): string => {
-      return searchParams.has(name) ? searchParams.get(name) : defaultValue;
-    };
-
     const title = getParam({name: 'title', defaultValue: 'My default title'});
     const description = getParam({
       name: 'description',
