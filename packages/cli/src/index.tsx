@@ -2,7 +2,7 @@ import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
 import {writeFile} from 'fs';
 import {Doc, Blog, Default} from '@ozaki/nodes';
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli
@@ -19,40 +19,58 @@ cli
 
 cli.help();
 cli.version('0.0.1');
-const parsed = cli.parse();
+const parsed = cli.parse().options as CliOptions;
 
-if (typeof parsed.options.output === 'string') {
-  let png = null;
-  if (parsed.options.type === 'doc') {
-    png = await generateImage(
-      <Doc
-        title={parsed.options.title}
-        description={parsed.options.description}
-      />,
-    );
-  } else if (parsed.options.type === 'blog') {
-    png = await generateImage(
+type CliOptions = {
+  output: string;
+  type: 'doc' | 'blog' | 'default';
+  title: string;
+  description: string;
+  moto: string;
+  author: string;
+  authorURL: string;
+};
+
+const generateJSX = (options: CliOptions) => {
+  if (options.type === 'doc') {
+    return <Doc title={options.title} description={options.description} />;
+  } else if (options.type === 'blog') {
+    return (
       <Blog
-        title={parsed.options.title}
-        author={parsed.options.author}
-        authorURL={parsed.options.authorURL}
-      />,
+        title={options.title}
+        author={options.author}
+        authorURL={options.authorURL}
+      />
     );
   } else {
-    png = await generateImage(
+    return (
       <Default
-        title={parsed.options.title}
-        description={parsed.options.description}
-        moto={parsed.options.moto}
-      />,
+        title={options.title}
+        description={options.description}
+        moto={options.moto}
+      />
     );
   }
-  writeFile(parsed.options.output, png, (err) => {
+};
+
+const saveImageToFile = async (outputPath: string, image: Buffer) => {
+  writeFile(outputPath, image, (err) => {
     if (err) {
       throw err;
+    } else {
+      console.log('The file has been saved!');
     }
-    console.log('The file has been saved!');
   });
+};
+
+if (typeof parsed.output === 'string') {
+  try {
+    const jsx = generateJSX(parsed);
+    const image = await generateImage(jsx);
+    await saveImageToFile(parsed.output, image);
+  } catch (error) {
+    throw error;
+  }
 } else {
-  throw new Error('Please specify a output path and a type');
+  throw new Error('Please specify a output path');
 }
