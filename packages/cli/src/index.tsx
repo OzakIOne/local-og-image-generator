@@ -66,8 +66,7 @@ const saveImageToFile = async (outputPath: string, image: Buffer) => {
 if (typeof parsed.output === 'string') {
   try {
     const jsx = generateJSX(parsed);
-    const image = await generateImage(jsx);
-    await saveImageToFile(parsed.output, image);
+    await saveImageToFile(parsed.output, await generateImage(jsx));
   } catch (error) {
     throw error;
   }
