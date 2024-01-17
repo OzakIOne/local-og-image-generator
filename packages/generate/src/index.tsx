@@ -1,21 +1,15 @@
 import satori from 'satori';
 import {Resvg} from '@resvg/resvg-js';
 import {satoriOptions, ResvgOptions} from '@ozaki/shared';
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 
-const generateSvg = async (Node: ReactNode): Promise<string> => {
-  return satori(<div style={{display: 'flex'}}>{Node}</div>, satoriOptions);
-};
+const generateSvg = async (Node: ReactNode): Promise<string> =>
+  satori(Node, satoriOptions);
 
-async function generatePng(svg: string): Promise<Buffer> {
-  const resvg = new Resvg(svg, ResvgOptions);
-  const pngData = resvg.render();
-  return pngData.asPng();
-}
+const generatePng = async (svg: string): Promise<Buffer> =>
+  new Resvg(svg, ResvgOptions).render().asPng();
 
-async function generateImage(Node: ReactNode): Promise<Buffer> {
-  const svg = await generateSvg(Node);
-  return generatePng(svg);
-}
+const generateImage = async (Node: ReactNode): Promise<Buffer> =>
+  generatePng(await generateSvg(Node));
 
 export {generateImage};

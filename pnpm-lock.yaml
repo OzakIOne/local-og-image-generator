@@ -42,6 +42,9 @@ importers:
       '@ozaki/nodes':
         specifier: workspace:^
         version: link:../nodes
+      '@ozaki/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6

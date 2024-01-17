@@ -1,8 +1,9 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
+import type {CliOptions} from '@ozaki/shared';
 import {writeFile} from 'fs';
 import {Doc, Blog, Default} from '@ozaki/nodes';
-import React, {ReactNode} from 'react';
+import React from 'react';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli
@@ -20,16 +21,6 @@ cli
 cli.help();
 cli.version('0.0.1');
 const parsed = cli.parse().options as CliOptions;
-
-type CliOptions = {
-  output: string;
-  type: 'doc' | 'blog' | 'default';
-  title: string;
-  description: string;
-  moto: string;
-  author: string;
-  authorURL: string;
-};
 
 const generateJSX = (options: CliOptions) => {
   if (options.type === 'doc') {

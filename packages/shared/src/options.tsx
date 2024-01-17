@@ -36,6 +36,11 @@ const ResvgOptions: ResvgRenderOptions = {
   },
 };
 
+interface CliOptions extends ImageProps {
+  output: string;
+  type: ImageType;
+}
+
 type ImageProps = {
   title?: string;
   description?: string;
@@ -47,4 +52,4 @@ type ImageProps = {
 type ImageType = 'doc' | 'blog' | 'default';
 
 export {satoriOptions, ResvgOptions};
-export type {ImageProps, ImageType};
+export type {ImageProps, ImageType, CliOptions};
