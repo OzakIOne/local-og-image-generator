@@ -54,34 +54,28 @@ export default async function handler(req: NextRequest) {
     };
 
     return new ImageResponse(
-      (
-        <div style={{display: 'flex'}}>
-          {(() => {
-            switch (type) {
-              case 'doc':
-                return (
-                  <Doc title={props.title} description={props.description} />
-                );
-              case 'blog':
-                return (
-                  <Blog
-                    title={props.title}
-                    author={props.author}
-                    authorURL={props.authorURL}
-                  />
-                );
-              default:
-                return (
-                  <Default
-                    title={props.title}
-                    description={props.description}
-                    moto={props.moto}
-                  />
-                );
-            }
-          })()}
-        </div>
-      ),
+      (() => {
+        switch (type) {
+          case 'doc':
+            return <Doc title={props.title} description={props.description} />;
+          case 'blog':
+            return (
+              <Blog
+                title={props.title}
+                author={props.author}
+                authorURL={props.authorURL}
+              />
+            );
+          default:
+            return (
+              <Default
+                title={props.title}
+                description={props.description}
+                moto={props.moto}
+              />
+            );
+        }
+      })(),
       {
         width: 1200,
         height: 630,
