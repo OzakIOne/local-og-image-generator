@@ -1,6 +1,6 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
-import type {ImageProps, ImageType} from '@ozaki/shared';
+import type {ImageProps, ImageType} from '@ozaki/types';
 import {Doc, Default, Blog} from '@ozaki/nodes';
 
 export const config = {
