@@ -1,5 +1,7 @@
 interface CliOptions extends ImageProps {
   output: string;
+  help: boolean;
+  font: string;
   type: ImageType;
 }
 

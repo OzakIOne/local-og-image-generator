@@ -36,12 +36,6 @@ pnpm cli:start --output ./blog.png --type blog --title "My Blog" --description "
 pnpm cli:start --output ./default.png --type default --title "Ozaki's site" --description "My website" --moto "I love coding"
 ```
 
-To change the font used, you can change the `OG_FONT` env variable, this is only available for the cli package as of now :
-
-```bash
-OG_FONT='./src/Pacifico.ttf' pnpm cli:start --output ./doc.png --type doc --title "My Title" --description "My description"
-```
-
 ## Deploy
 
 ### Vercel edge
