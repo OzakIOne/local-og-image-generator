@@ -1,4 +1,6 @@
 import {z} from 'zod';
+import fs from 'fs';
+
 const optionsSchema = z
   .object({
     output: z.string(),
@@ -12,4 +14,9 @@ const optionsSchema = z
   })
   .partial();
 
-export {optionsSchema};
+const fileExists = async (path: string): Promise<string> => {
+  await fs.promises.access(path, fs.constants.F_OK);
+  return path;
+};
+
+export {optionsSchema, fileExists};

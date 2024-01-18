@@ -1,12 +1,12 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
 import type {CliOptions} from '@ozaki/types';
-import {PathLike, writeFile} from 'fs';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
 import {optionsSchema} from './validation';
 import {ResvgOptions, globalConfig} from './settings';
 import {generateJSX} from '@ozaki/shared';
+import {fontPath, saveImageToFile} from './utils';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli
@@ -23,8 +23,7 @@ cli
   .option('--moto <name>', 'Choose a moto');
 cli.version('0.0.1');
 const parsed = cli.parse().options as CliOptions;
-
-const fontPath = parsed.font ?? './src/Roboto-Regular.ttf';
+optionsSchema.parse(parsed);
 
 const satoriOptions: SatoriOptions = {
   width: globalConfig.satoriWidth,
@@ -33,23 +32,11 @@ const satoriOptions: SatoriOptions = {
   fonts: [
     {
       name: 'Roboto',
-      data: await promises.readFile(fontPath),
+      data: await promises.readFile(await fontPath(parsed)),
       style: 'normal',
     },
   ],
   debug: true,
-};
-
-optionsSchema.parse(parsed);
-
-const saveImageToFile = async (outputPath: PathLike, image: Buffer) => {
-  writeFile(outputPath, image, (err) => {
-    if (err) {
-      throw err;
-    } else {
-      console.log('The file has been saved!');
-    }
-  });
 };
 
 if (parsed.help === true) {
