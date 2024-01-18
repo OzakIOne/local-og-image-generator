@@ -4,6 +4,6 @@
   "main": "src/index.ts",
   "type": "module",
   "dependencies": {
-    "@ozaki/shared": "workspace:^"
+    "@ozaki/types": "workspace:^"
   }
 }

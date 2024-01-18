@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageProps} from '@ozaki/shared';
+import {ImageProps} from '@ozaki/types';
 import {containerStyle} from './style/containerstyle';
 import {DocusaurusLogo} from './logo';
 import {CenterRow} from './components/CenterRow';

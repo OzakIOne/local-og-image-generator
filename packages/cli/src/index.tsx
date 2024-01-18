@@ -1,6 +1,6 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
-import type {CliOptions} from '@ozaki/shared';
+import type {CliOptions} from '@ozaki/types';
 import {satoriOptions, ResvgOptions} from '@ozaki/shared';
 import {writeFile} from 'fs';
 import {Doc, Blog, Default} from '@ozaki/nodes';

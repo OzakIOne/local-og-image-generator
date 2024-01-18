@@ -4,7 +4,7 @@ This project is a simple tool to generate Open Graph images for your website
 
 ## Documentation
 
-### Images
+### Images options
 
 #### Doc
 
@@ -36,18 +36,21 @@ pnpm cli:start --output ./blog.png --type blog --title "My Blog" --description "
 pnpm cli:start --output ./default.png --type default --title "Ozaki's site" --description "My website" --moto "I love coding"
 ```
 
-To change the font used, you can change the `OG_FONT` env variable :
+To change the font used, you can change the `OG_FONT` env variable, this is only available for the cli package as of now :
 
 ```bash
-FONT_PATH='./src/Pacifico.ttf' pnpm cli:start --output ./doc.png --type doc --title "My Title" --description "My description"
+OG_FONT='./src/Pacifico.ttf' pnpm cli:start --output ./doc.png --type doc --title "My Title" --description "My description"
 ```
 
 ## Deploy
 
-### Vercel
+### Vercel edge
 
-Framework Preset : `Next.js`
-Install command : `pnpm install`
-Build command : `pnpm build`
+- Framework Preset : `Next.js`
+- Install command : `pnpm install`
+- Build command : `pnpm build`
+- Root directory : `packages/web`
 
-Root directory : `packages/web`
+### Other edge
+
+- [ ] Todo

@@ -45,6 +45,9 @@ importers:
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared
+      '@ozaki/types':
+        specifier: workspace:^
+        version: link:../types
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6
@@ -87,9 +90,9 @@ importers:
 
   packages/nodes:
     dependencies:
-      '@ozaki/shared':
+      '@ozaki/types':
         specifier: workspace:^
-        version: link:../shared
+        version: link:../types
 
   packages/shared:
     dependencies:
@@ -99,6 +102,8 @@ importers:
       satori:
         specifier: ^0.10.11
         version: 0.10.11
+
+  packages/types: {}
 
   packages/vercel-edge:
     dependencies:
