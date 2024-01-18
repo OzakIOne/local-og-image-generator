@@ -12,4 +12,4 @@ const ResvgOptions: ResvgRenderOptions = {
   },
 };
 
-export {globalConfig, ResvgOptions};
+export {ResvgOptions};

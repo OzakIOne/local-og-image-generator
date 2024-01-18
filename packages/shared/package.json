@@ -5,7 +5,6 @@
   "type": "module",
   "dependencies": {
     "@ozaki/nodes": "workspace:^",
-    "@ozaki/types": "workspace:^",
-    "@resvg/resvg-js": "^2.6.0"
+    "@ozaki/types": "workspace:^"
   }
 }

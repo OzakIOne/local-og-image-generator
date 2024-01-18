@@ -39,9 +39,6 @@ importers:
       '@ozaki/generate':
         specifier: workspace:^
         version: link:../generate
-      '@ozaki/nodes':
-        specifier: workspace:^
-        version: link:../nodes
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared
@@ -54,9 +51,6 @@ importers:
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6
-      '@types/react':
-        specifier: ^18.2.46
-        version: 18.2.46
       cac:
         specifier: ^6.7.14
         version: 6.7.14
@@ -66,9 +60,6 @@ importers:
       prettier:
         specifier: ^3.1.1
         version: 3.1.1
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
       satori:
         specifier: ^0.10.11
         version: 0.10.11
@@ -81,9 +72,6 @@ importers:
 
   packages/generate:
     dependencies:
-      '@ozaki/shared':
-        specifier: workspace:^
-        version: link:../shared
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.0
@@ -111,17 +99,11 @@ importers:
       '@ozaki/types':
         specifier: workspace:^
         version: link:../types
-      '@resvg/resvg-js':
-        specifier: ^2.6.0
-        version: 2.6.0
 
   packages/types: {}
 
   packages/vercel-edge:
     dependencies:
-      '@ozaki/nodes':
-        specifier: workspace:^
-        version: link:../nodes
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared

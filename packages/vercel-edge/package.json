@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@ozaki/nodes": "workspace:^",
     "@ozaki/shared": "workspace:^",
     "@ozaki/types": "workspace:^",
     "@vercel/og": "latest",
