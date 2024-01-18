@@ -105,6 +105,12 @@ importers:
 
   packages/shared:
     dependencies:
+      '@ozaki/nodes':
+        specifier: workspace:^
+        version: link:../nodes
+      '@ozaki/types':
+        specifier: workspace:^
+        version: link:../types
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.0
@@ -119,6 +125,9 @@ importers:
       '@ozaki/nodes':
         specifier: workspace:^
         version: link:../nodes
+      '@ozaki/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@ozaki/types':
         specifier: workspace:^
         version: link:../types

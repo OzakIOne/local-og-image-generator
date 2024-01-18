@@ -1,7 +1,7 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
-import type {ImageProps, ImageType} from '@ozaki/types';
-import {Doc, Default, Blog} from '@ozaki/nodes';
+import type {CliOptions, ImageType} from '@ozaki/types';
+import {generateJSX} from '@ozaki/shared';
 
 export const config = {
   runtime: 'edge',
@@ -41,7 +41,8 @@ export default async function handler(req: NextRequest) {
       defaultValue: 'Focus on your content',
     });
     const type = getParam({name: 'type', defaultValue: 'default'}) as ImageType;
-    const props: ImageProps = {
+    const props: CliOptions = {
+      type,
       title,
       description,
       author,
@@ -49,43 +50,19 @@ export default async function handler(req: NextRequest) {
       moto,
     };
 
-    return new ImageResponse(
-      (() => {
-        switch (type) {
-          case 'doc':
-            return <Doc title={props.title} description={props.description} />;
-          case 'blog':
-            return (
-              <Blog
-                title={props.title}
-                author={props.author}
-                authorURL={props.authorURL}
-              />
-            );
-          default:
-            return (
-              <Default
-                title={props.title}
-                description={props.description}
-                moto={props.moto}
-              />
-            );
-        }
-      })(),
-      {
-        width: 1200,
-        height: 630,
-        fonts: [
-          {
-            name: 'Roboto',
-            data: fontData,
-            style: 'normal',
-          },
-        ],
-        emoji: 'twemoji',
-        debug: true,
-      },
-    );
+    return new ImageResponse(generateJSX(props), {
+      width: 1200,
+      height: 630,
+      fonts: [
+        {
+          name: 'Roboto',
+          data: fontData,
+          style: 'normal',
+        },
+      ],
+      emoji: 'twemoji',
+      debug: true,
+    });
   } catch (e: any) {
     console.error(`${e.message}`);
     return new Response(`Failed to generate the image`, {

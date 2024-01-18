@@ -2,31 +2,11 @@ import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
 import type {CliOptions} from '@ozaki/types';
 import {PathLike, writeFile} from 'fs';
-import {Doc, Blog, Default} from '@ozaki/nodes';
-import React from 'react';
-import {z} from 'zod';
-import type {ResvgRenderOptions} from '@resvg/resvg-js';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
-
-const globalConfig = {
-  satoriWidth: 1200,
-  satoriHeight: 650,
-  resvgWidth: 1200 * 2,
-};
-
-const optionsSchema = z
-  .object({
-    output: z.string(),
-    type: z.enum(['doc', 'blog', 'default']),
-    title: z.string(),
-    description: z.string(),
-    author: z.string(),
-    authorURL: z.string().url(),
-    font: z.string(),
-    moto: z.string(),
-  })
-  .partial();
+import {optionsSchema} from './validation';
+import {ResvgOptions, globalConfig} from './settings';
+import {generateJSX} from '@ozaki/shared';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli
@@ -41,10 +21,8 @@ cli
   .option('--description <name>', 'Choose a description')
   .option('--font <path>', 'Choose a font path')
   .option('--moto <name>', 'Choose a moto');
-
 cli.version('0.0.1');
 const parsed = cli.parse().options as CliOptions;
-console.log('parsed:', parsed);
 
 const fontPath = parsed.font ?? './src/Roboto-Regular.ttf';
 
@@ -62,41 +40,7 @@ const satoriOptions: SatoriOptions = {
   debug: true,
 };
 
-const ResvgOptions: ResvgRenderOptions = {
-  background: 'rgba(255, 255, 255)',
-  fitTo: {
-    mode: 'width',
-    value: globalConfig.resvgWidth,
-  },
-  font: {
-    // fontFiles: [fontPath], // Load custom fonts.
-    loadSystemFonts: false, // It will be faster to disable loading system fonts.
-  },
-};
-
 optionsSchema.parse(parsed);
-
-const generateJSX = (options: CliOptions) => {
-  if (options.type === 'doc') {
-    return <Doc title={options.title} description={options.description} />;
-  } else if (options.type === 'blog') {
-    return (
-      <Blog
-        title={options.title}
-        author={options.author}
-        authorURL={options.authorURL}
-      />
-    );
-  } else {
-    return (
-      <Default
-        title={options.title}
-        description={options.description}
-        moto={options.moto}
-      />
-    );
-  }
-};
 
 const saveImageToFile = async (outputPath: PathLike, image: Buffer) => {
   writeFile(outputPath, image, (err) => {
