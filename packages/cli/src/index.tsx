@@ -3,7 +3,7 @@ import {generateImage} from '@ozaki/generate';
 import type {CliOptions} from '@ozaki/types';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
-import {optionsSchema} from './validation';
+import {docSchema, cliSchema, blogSchema, defaultSchema} from './validation';
 import {ResvgOptions} from './settings';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {fontPath, saveImageToFile} from './utils';
@@ -13,7 +13,7 @@ cli
   .option('--output <path>', 'Choose a path where to generate the OG images')
   .option(
     '--type <doc | blog | default>',
-    'Choose which type of OG image to generate',
+    'Choose which type of image to generate',
   )
   .option('--title <name>', 'Choose a title')
   .option('--author <name>', 'Choose an author')
@@ -23,7 +23,6 @@ cli
   .option('--moto <name>', 'Choose a moto');
 cli.version('0.0.1');
 const parsed = cli.parse().options as CliOptions;
-optionsSchema.parse(parsed);
 
 const satoriOptions = createConfig({
   fonts: [
@@ -38,6 +37,16 @@ const satoriOptions = createConfig({
 if (parsed.help === true) {
   cli.outputHelp();
 } else if (typeof parsed.output === 'string') {
+  cliSchema.parse(parsed);
+
+  if (parsed.type === 'doc') {
+    docSchema.parse(parsed);
+  } else if (parsed.type === 'blog') {
+    blogSchema.parse(parsed);
+  } else if (parsed.type === 'default') {
+    defaultSchema.parse(parsed);
+  }
+
   try {
     const jsx = generateJSX(parsed);
     await saveImageToFile(

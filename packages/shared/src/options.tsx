@@ -26,7 +26,7 @@ const generateJSX = (options: CliOptions) => {
 
 const globalConfig = {
   satoriWidth: 1200,
-  satoriHeight: 350,
+  satoriHeight: 650,
   resvgWidth: 1200 * 2,
 };
 
