@@ -21,9 +21,9 @@
     "generate:dev": "pnpm --filter ./packages/generate run watch",
     "generate:start": "pnpm --filter ./packages/generate run start",
     "lint": "pnpm --stream -r run lint",
-    "web:build": "pnpm --filter ./packages/web run build",
-    "web:dev": "pnpm --filter ./packages/web run dev",
-    "web:start": "pnpm --filter ./packages/web run start"
+    "vercel:build": "pnpm --filter ./packages/vercel-edge run build",
+    "vercel:dev": "pnpm --filter ./packages/vercel-edge run dev",
+    "vercel:start": "pnpm --filter ./packages/vercel-edge run start"
   },
   "version": "1.0.0"
 }
