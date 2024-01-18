@@ -1,9 +1,5 @@
 import type {ResvgRenderOptions} from '@resvg/resvg-js';
-const globalConfig = {
-  satoriWidth: 1200,
-  satoriHeight: 650,
-  resvgWidth: 1200 * 2,
-};
+import {globalConfig} from '@ozaki/shared';
 
 const ResvgOptions: ResvgRenderOptions = {
   background: 'rgba(255, 255, 255)',
@@ -12,8 +8,7 @@ const ResvgOptions: ResvgRenderOptions = {
     value: globalConfig.resvgWidth,
   },
   font: {
-    // fontFiles: [fontPath], // Load custom fonts.
-    loadSystemFonts: false, // It will be faster to disable loading system fonts.
+    loadSystemFonts: false,
   },
 };
 

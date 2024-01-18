@@ -4,8 +4,8 @@ import type {CliOptions} from '@ozaki/types';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
 import {optionsSchema} from './validation';
-import {ResvgOptions, globalConfig} from './settings';
-import {generateJSX} from '@ozaki/shared';
+import {ResvgOptions} from './settings';
+import {createConfig, generateJSX} from '@ozaki/shared';
 import {fontPath, saveImageToFile} from './utils';
 
 const cli = cac('docusaurus-cli-og-image-generator');
@@ -25,10 +25,7 @@ cli.version('0.0.1');
 const parsed = cli.parse().options as CliOptions;
 optionsSchema.parse(parsed);
 
-const satoriOptions: SatoriOptions = {
-  width: globalConfig.satoriWidth,
-  height: globalConfig.satoriHeight,
-
+const satoriOptions = createConfig({
   fonts: [
     {
       name: 'Roboto',
@@ -36,8 +33,7 @@ const satoriOptions: SatoriOptions = {
       style: 'normal',
     },
   ],
-  debug: true,
-};
+}) as SatoriOptions;
 
 if (parsed.help === true) {
   cli.outputHelp();

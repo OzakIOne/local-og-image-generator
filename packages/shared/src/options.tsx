@@ -24,4 +24,25 @@ const generateJSX = (options: CliOptions) => {
   }
 };
 
-export {generateJSX};
+const globalConfig = {
+  satoriWidth: 1200,
+  satoriHeight: 650,
+  resvgWidth: 1200 * 2,
+};
+
+type config = {
+  fonts: {
+    name: string;
+    data: ArrayBuffer;
+    style: string;
+  }[];
+};
+
+const createConfig = (config: config) => ({
+  width: globalConfig.satoriWidth,
+  height: globalConfig.satoriHeight,
+  ...config,
+  debug: true,
+});
+
+export {generateJSX, globalConfig, createConfig};

@@ -6,7 +6,6 @@
   "dependencies": {
     "@ozaki/nodes": "workspace:^",
     "@ozaki/types": "workspace:^",
-    "@resvg/resvg-js": "^2.6.0",
-    "satori": "^0.10.11"
+    "@resvg/resvg-js": "^2.6.0"
   }
 }
