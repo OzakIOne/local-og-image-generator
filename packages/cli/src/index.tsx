@@ -1,6 +1,7 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
 import type {CliOptions} from '@ozaki/shared';
+import {satoriOptions, ResvgOptions} from '@ozaki/shared';
 import {writeFile} from 'fs';
 import {Doc, Blog, Default} from '@ozaki/nodes';
 import React from 'react';
@@ -57,7 +58,10 @@ const saveImageToFile = async (outputPath: string, image: Buffer) => {
 if (typeof parsed.output === 'string') {
   try {
     const jsx = generateJSX(parsed);
-    await saveImageToFile(parsed.output, await generateImage(jsx));
+    await saveImageToFile(
+      parsed.output,
+      await generateImage({Node: jsx, satoriOptions, svgOptions: ResvgOptions}),
+    );
   } catch (error) {
     throw error;
   }
