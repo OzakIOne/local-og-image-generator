@@ -1,8 +1,14 @@
-import {Blog, Default, Doc} from '@ozaki/nodes';
+import {
+  Blog,
+  Default,
+  Doc,
+  BlogProps,
+  DefaultProps,
+  DocProps,
+} from '@ozaki/nodes';
 import React from 'react';
-import type {CliOptions} from '@ozaki/types';
 
-const generateJSX = (options: CliOptions) => {
+const generateJSX = (options: BlogProps | DefaultProps | DocProps) => {
   if (options.type === 'doc') return <Doc {...options} />;
   else if (options.type === 'blog') return <Blog {...options} />;
   return <Default {...options} />;

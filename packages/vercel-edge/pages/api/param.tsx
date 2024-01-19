@@ -1,9 +1,9 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
-import type {CliOptions, ImageType} from '@ozaki/types';
+import type {CliOptions} from '@ozaki/types';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {SatoriOptions} from 'next/dist/compiled/@vercel/og/satori';
-import {qs} from 'qs';
+import qs from 'qs';
 
 export const config = {
   runtime: 'edge',
@@ -18,34 +18,16 @@ export default async function handler(req: NextRequest) {
   try {
     const {searchParams} = new URL(req.url);
 
-    // TODO parse with qs
-    const getParam = ({
-      name,
-      defaultValue,
-    }: {
-      name: string;
-      defaultValue: string;
-    }): string => {
-      return searchParams.has(name) ? searchParams.get(name) : defaultValue;
-    };
+    const param = qs.parse(searchParams.toString());
 
-    const title = getParam({name: 'title', defaultValue: 'My default title'});
-    const description = getParam({
-      name: 'description',
-      defaultValue: 'My default description',
-    });
-    const author = getParam({name: 'author', defaultValue: 'ozakione'});
-    const authorURL = getParam({
-      name: 'authorurl',
-      defaultValue: 'https://github.com/ozakione.png',
-    });
-    const tags = searchParams.has('tags') ? searchParams.getAll('tags') : [];
-    const moto = getParam({
-      name: 'moto',
-      defaultValue: 'Focus on your content',
-    });
-    const type = getParam({name: 'type', defaultValue: 'default'}) as ImageType;
-    const props: CliOptions = {
+    const title = param.title || 'My default title';
+    const description = param.description || 'My default description';
+    const author = param.author || 'ozakione';
+    const authorURL = param.authorURL || 'https://github.com/ozakione.png';
+    const moto = param.moto;
+    const tags = Array.isArray(param.tags) ? param.tags : [];
+    const type = param.types || 'default';
+    const props = {
       type,
       title,
       description,
@@ -53,7 +35,7 @@ export default async function handler(req: NextRequest) {
       authorURL,
       moto,
       tags: [tags].flat(),
-    };
+    } as CliOptions;
 
     return new ImageResponse(
       generateJSX(props),
