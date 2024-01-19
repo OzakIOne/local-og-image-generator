@@ -3,7 +3,7 @@ import {generateImage} from '@ozaki/generate';
 import type {CliOptions} from '@ozaki/types';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
-import {docSchema, cliSchema, blogSchema, defaultSchema} from './validation';
+import {cliSchema} from './validation';
 import {ResvgOptions} from './settings';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {fontPath, saveImageToFile} from './utils';
@@ -39,10 +39,6 @@ if (parsed.help === true) {
   cli.outputHelp();
 } else if (typeof parsed.output === 'string') {
   cliSchema.parse(parsed);
-
-  if (parsed.type === 'doc') docSchema.parse(parsed);
-  else if (parsed.type === 'blog') blogSchema.parse(parsed);
-  else defaultSchema.parse(parsed);
 
   try {
     const jsx = generateJSX(parsed);

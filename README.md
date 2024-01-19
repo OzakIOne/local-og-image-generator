@@ -8,10 +8,14 @@ This project is a simple tool to generate Open Graph images for your website
 
 #### Doc
 
+![Doc image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=doc)
+
 - title
 - description
 
 #### Blog
+
+![Blog image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=blog)
 
 - title
 - description
@@ -19,6 +23,8 @@ This project is a simple tool to generate Open Graph images for your website
 - author (author's name)
 
 #### Default
+
+![Default image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=default)
 
 - title
 - description

@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "type": "module",
   "dependencies": {
-    "@ozaki/types": "workspace:^"
+    "@ozaki/types": "workspace:^",
+    "zod": "^3.22.4"
   }
 }

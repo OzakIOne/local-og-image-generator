@@ -3,6 +3,7 @@ import {NextRequest} from 'next/server';
 import type {CliOptions, ImageType} from '@ozaki/types';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {SatoriOptions} from 'next/dist/compiled/@vercel/og/satori';
+import {qs} from 'qs';
 
 export const config = {
   runtime: 'edge',
@@ -17,6 +18,7 @@ export default async function handler(req: NextRequest) {
   try {
     const {searchParams} = new URL(req.url);
 
+    // TODO parse with qs
     const getParam = ({
       name,
       defaultValue,

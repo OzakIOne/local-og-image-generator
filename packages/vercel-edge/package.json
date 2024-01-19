@@ -2,8 +2,10 @@
   "dependencies": {
     "@ozaki/shared": "workspace:^",
     "@ozaki/types": "workspace:^",
+    "@types/qs": "^6.9.11",
     "@vercel/og": "latest",
     "next": "latest",
+    "qs": "^6.11.2",
     "react-dom": "latest"
   },
   "devDependencies": {
