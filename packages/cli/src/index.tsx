@@ -20,6 +20,7 @@ cli
   .option('--authorURL <name>', 'Choose an author URL')
   .option('--description <name>', 'Choose a description')
   .option('--font <path>', 'Choose a font path')
+  .option('--tags <name>', 'Choose a tag')
   .option('--moto <name>', 'Choose a moto');
 cli.version('0.0.1');
 const parsed = cli.parse().options as CliOptions;

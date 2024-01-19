@@ -13,7 +13,6 @@ const Doc = (props: ImageProps) => (
     <div
       style={{
         display: 'flex',
-        flexDirection: 'row',
       }}>
       <div
         style={{

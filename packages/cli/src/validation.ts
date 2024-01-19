@@ -40,11 +40,16 @@ const blogSchema = docSchema.extend({
   authorURL: z.string().url({
     message: 'Author URL must be a valid URL to an image',
   }),
+  tags: z.array(z.string()).or(z.string()).optional(),
 });
 
 const fileExists = async (path: string): Promise<string> => {
-  await fs.promises.access(path, fs.constants.F_OK);
-  return path;
+  try {
+    await fs.promises.access(path, fs.promises.constants.F_OK);
+    return path;
+  } catch (error) {
+    throw new Error('File does not exist.');
+  }
 };
 
 export {docSchema, blogSchema, defaultSchema, cliSchema, fileExists};

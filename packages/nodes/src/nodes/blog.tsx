@@ -2,7 +2,7 @@ import React from 'react';
 import {ImageProps} from '@ozaki/types';
 import {containerStyle} from './style/containerstyle';
 import {DocusaurusLogo} from './logo';
-import {AuthorImage, Footer, Header} from './components';
+import {AuthorImage, Footer, Header, Tags} from './components';
 
 function checkAuthorImage(authorURL: string): boolean {
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
@@ -17,7 +17,6 @@ const Blog = (props: ImageProps) => (
     <div
       style={{
         display: 'flex',
-        flexDirection: 'row',
         marginTop: '4rem',
       }}>
       <div
@@ -27,17 +26,23 @@ const Blog = (props: ImageProps) => (
           marginLeft: '2rem',
         }}>
         <Footer>
-          {checkAuthorImage(props.authorURL) && (
-            <AuthorImage author={props.authorURL} />
+          {props.authorURL && checkAuthorImage(props.authorURL) && (
+            <AuthorImage size={96} author={props.authorURL} />
           )}
           {props.author && (
-            <div style={{display: 'flex', alignItems: 'center'}}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginLeft: '1rem',
+              }}>
               {props.author}
             </div>
           )}
         </Footer>
       </div>
     </div>
+    {props.tags && <Tags tags={props.tags}></Tags>}
   </div>
 );
 

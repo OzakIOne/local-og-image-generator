@@ -11,6 +11,7 @@ type ImageProps = {
   moto?: string;
   author?: string;
   authorURL?: string;
+  tags?: string[];
 };
 
 type ImageType = 'doc' | 'blog' | 'default';
