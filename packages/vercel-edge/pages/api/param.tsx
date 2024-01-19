@@ -37,6 +37,7 @@ export default async function handler(req: NextRequest) {
       name: 'authorurl',
       defaultValue: 'https://github.com/ozakione.png',
     });
+    const tags = searchParams.has('tags') ? searchParams.getAll('tags') : [];
     const moto = getParam({
       name: 'moto',
       defaultValue: 'Focus on your content',
@@ -49,6 +50,7 @@ export default async function handler(req: NextRequest) {
       author,
       authorURL,
       moto,
+      tags: [tags].flat(),
     };
 
     return new ImageResponse(
