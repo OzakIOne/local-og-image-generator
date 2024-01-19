@@ -40,13 +40,9 @@ if (parsed.help === true) {
 } else if (typeof parsed.output === 'string') {
   cliSchema.parse(parsed);
 
-  if (parsed.type === 'doc') {
-    docSchema.parse(parsed);
-  } else if (parsed.type === 'blog') {
-    blogSchema.parse(parsed);
-  } else if (parsed.type === 'default') {
-    defaultSchema.parse(parsed);
-  }
+  if (parsed.type === 'doc') docSchema.parse(parsed);
+  else if (parsed.type === 'blog') blogSchema.parse(parsed);
+  else defaultSchema.parse(parsed);
 
   try {
     const jsx = generateJSX(parsed);
