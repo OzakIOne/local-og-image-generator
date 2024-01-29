@@ -2,6 +2,7 @@ import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
 import type {ImageOptions} from '@ozaki/types';
 import {createConfig, generateJSX} from '@ozaki/shared';
+// eslint-disable-next-line node/no-missing-import
 import {SatoriOptions} from 'next/dist/compiled/@vercel/og/satori';
 import qs from 'qs';
 
@@ -49,8 +50,7 @@ export default async function handler(req: NextRequest) {
         ],
       }) as SatoriOptions,
     );
-  } catch (e: any) {
-    console.error(`${e.message}`);
+  } catch (e) {
     return new Response(`Failed to generate the image`, {
       status: 500,
     });
