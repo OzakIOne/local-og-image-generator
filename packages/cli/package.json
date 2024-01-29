@@ -19,7 +19,7 @@
     "lint": "eslint src/*.tsx",
     "lint:fix": "eslint src/*.tsx --fix",
     "start": "tsx src/index.tsx",
-    "build": "swc src --out-dir dist",
+    "build": "tsc",
     "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
   },
   "type": "module",

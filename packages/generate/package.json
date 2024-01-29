@@ -1,10 +1,11 @@
 {
   "name": "@ozaki/generate",
   "version": "1.0.0",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "swc src --out-dir dist"
+    "build": "tsc"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.0",

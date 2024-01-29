@@ -10,7 +10,9 @@
     "paths": {
       "@ozaki/shared": [
         "packages/shared/index.ts"
-      ]
+      ],
+      "*": ["./dist/*"] // This tells TypeScript to look in the "dist/" folder for all modules.
+
     },
     "skipDefaultLibCheck": true
   }
