@@ -3,7 +3,6 @@
   "extends": [
     "plugin:node/recommended",
     "eslint:recommended",
-    "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
@@ -19,11 +18,25 @@
     "node": true
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx",
+        ".js"
+      ]
+    },
     "import/resolver": {
       "node": {
         "extensions": [
           ".ts",
           ".tsx"
+        ]
+      },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": [
+          "apps/*/tsconfig.json",
+          "libs/*/tsconfig.json"
         ]
       },
       "alias": {

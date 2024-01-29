@@ -4,6 +4,10 @@
     "moduleResolution": "Bundler",
     "module": "ESNext",
     "target": "ESNext",
+    "noEmit": false,
+    "declaration": true,
+    "allowImportingTsExtensions": false,
+    "outDir": "./dist",
     "resolveJsonModule": true
   },
   "extends": "../../tsconfig.json",

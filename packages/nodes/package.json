@@ -1,12 +1,13 @@
 {
   "name": "@ozaki/nodes",
   "version": "1.0.0",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "dependencies": {
     "zod": "^3.22.4"
   },
   "scripts": {
-    "build": "swc src --out-dir dist"
+    "build": "tsc"
   }
 }

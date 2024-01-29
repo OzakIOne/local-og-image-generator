@@ -1,13 +1,14 @@
 {
   "name": "@ozaki/shared",
   "version": "1.0.0",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "dependencies": {
     "@ozaki/nodes": "workspace:^",
     "@ozaki/types": "workspace:^"
   },
   "scripts": {
-    "build": "swc src --out-dir dist"
+    "build": "tsc"
   }
 }
