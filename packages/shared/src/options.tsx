@@ -1,19 +1,8 @@
-import {
-  Blog,
-  Default,
-  Doc,
-  BlogProps,
-  DefaultProps,
-  DocProps,
-} from '@ozaki/nodes';
-import {ImageType} from '@ozaki/types';
+import {Blog, Default, Doc} from '@ozaki/nodes';
+import {ImageOptions} from '@ozaki/types';
 import React from 'react';
 
-interface Props extends BlogProps, DefaultProps, DocProps {
-  type: ImageType;
-}
-
-const generateJSX = (options: Props) => {
+const generateJSX = (options: ImageOptions) => {
   if (options.type === 'doc') return <Doc {...options} />;
   else if (options.type === 'blog') return <Blog {...options} />;
   return <Default {...options} />;

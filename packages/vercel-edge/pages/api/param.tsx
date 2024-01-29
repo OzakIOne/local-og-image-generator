@@ -1,10 +1,9 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
-import type {ImageType} from '@ozaki/types';
+import type {ImageOptions} from '@ozaki/types';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {SatoriOptions} from 'next/dist/compiled/@vercel/og/satori';
 import qs from 'qs';
-import {BlogProps, DefaultProps, DocProps} from '@ozaki/nodes';
 
 export const config = {
   runtime: 'edge',
@@ -13,10 +12,6 @@ export const config = {
 const font = fetch(
   new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
 ).then((res) => res.arrayBuffer());
-
-interface WebOptions extends BlogProps, DefaultProps, DocProps {
-  type: ImageType;
-}
 
 export default async function handler(req: NextRequest) {
   const fontData = await font;
@@ -28,10 +23,10 @@ export default async function handler(req: NextRequest) {
     const title = param.title || 'My default title';
     const description = param.description || 'My default description';
     const author = param.author || 'ozakione';
-    const authorURL = param.authorURL || 'https://github.com/ozakione.png';
+    const authorURL = param.authorurl || 'https://github.com/ozakione.png';
     const moto = param.moto;
     const tags = Array.isArray(param.tags) ? param.tags : [];
-    const type = param.types || 'default';
+    const type = param.type || 'default';
     const props = {
       type,
       title,
@@ -40,7 +35,7 @@ export default async function handler(req: NextRequest) {
       authorURL,
       moto,
       tags: [tags].flat(),
-    } as WebOptions;
+    } as ImageOptions;
 
     return new ImageResponse(
       generateJSX(props),

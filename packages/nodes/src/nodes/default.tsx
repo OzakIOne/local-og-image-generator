@@ -1,8 +1,7 @@
 import React from 'react';
 import {containerStyle} from './style/containerstyle';
 import {DocusaurusLogo} from './logo';
-import {CenterRow} from './components/CenterRow';
-import {Footer} from './components';
+import {Footer, CenterRow} from './components';
 import {DefaultProps} from './types';
 import {defaultSchema} from './validation';
 

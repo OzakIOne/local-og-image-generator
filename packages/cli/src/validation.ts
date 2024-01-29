@@ -2,7 +2,7 @@ import fs from 'fs';
 import {z} from 'zod';
 
 const cliSchema = z.object({
-  output: z.string({
+  output: z.coerce.string({
     required_error: 'Output is required',
     invalid_type_error: 'Output must be a path',
   }),
@@ -10,8 +10,8 @@ const cliSchema = z.object({
     required_error: 'Type is required',
     invalid_type_error: 'Must be one of "doc", "blog", or "default"',
   }),
-  font: z.string().optional(),
-  help: z.boolean().optional(),
+  font: z.coerce.string().optional(),
+  help: z.coerce.boolean().optional(),
 });
 
 const fileExists = async (path: string): Promise<string> => {

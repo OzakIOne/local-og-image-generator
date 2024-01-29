@@ -103,7 +103,11 @@ importers:
         specifier: workspace:^
         version: link:../types
 
-  packages/types: {}
+  packages/types:
+    dependencies:
+      '@ozaki/nodes':
+        specifier: workspace:^
+        version: link:../nodes
 
   packages/vercel-edge:
     dependencies:
