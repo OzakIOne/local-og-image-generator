@@ -107,6 +107,9 @@ importers:
 
   packages/vercel-edge:
     dependencies:
+      '@ozaki/nodes':
+        specifier: workspace:^
+        version: link:../nodes
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared

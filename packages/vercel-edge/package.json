@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ozaki/nodes": "workspace:^",
     "@ozaki/shared": "workspace:^",
     "@ozaki/types": "workspace:^",
     "@types/qs": "^6.9.11",

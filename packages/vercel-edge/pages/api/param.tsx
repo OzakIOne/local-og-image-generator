@@ -1,9 +1,10 @@
 import {ImageResponse} from '@vercel/og';
 import {NextRequest} from 'next/server';
-import type {CliOptions} from '@ozaki/types';
+import type {ImageType} from '@ozaki/types';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {SatoriOptions} from 'next/dist/compiled/@vercel/og/satori';
 import qs from 'qs';
+import {BlogProps, DefaultProps, DocProps} from '@ozaki/nodes';
 
 export const config = {
   runtime: 'edge',
@@ -12,6 +13,10 @@ export const config = {
 const font = fetch(
   new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
 ).then((res) => res.arrayBuffer());
+
+interface WebOptions extends BlogProps, DefaultProps, DocProps {
+  type: ImageType;
+}
 
 export default async function handler(req: NextRequest) {
   const fontData = await font;
@@ -35,7 +40,7 @@ export default async function handler(req: NextRequest) {
       authorURL,
       moto,
       tags: [tags].flat(),
-    } as CliOptions;
+    } as WebOptions;
 
     return new ImageResponse(
       generateJSX(props),
