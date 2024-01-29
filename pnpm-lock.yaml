@@ -87,9 +87,6 @@ importers:
 
   packages/nodes:
     dependencies:
-      '@ozaki/types':
-        specifier: workspace:^
-        version: link:../types
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -111,9 +108,6 @@ importers:
 
   packages/vercel-edge:
     dependencies:
-      '@ozaki/nodes':
-        specifier: workspace:^
-        version: link:../nodes
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared
