@@ -1,6 +1,6 @@
 import {PathLike} from 'fs';
 import {writeFile} from 'fs/promises';
-import {fileExists} from './validation';
+import {fileExists} from './validation.js';
 import {CliOptions} from '@ozaki/types';
 
 const saveImageToFile = async (outputPath: PathLike, image: Buffer) => {

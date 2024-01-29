@@ -1,9 +1,9 @@
 import React from 'react';
-import {containerStyle} from './style/containerstyle';
-import {DocusaurusLogo} from './logo';
-import {Footer, Header} from './components';
-import {DocProps} from './types';
-import {docSchema} from './validation';
+import {containerStyle} from './style/containerstyle.js';
+import {DocusaurusLogo} from './logo.js';
+import {Footer, Header} from './components/index.js';
+import {DocProps} from './types/index.js';
+import {docSchema} from './validation/index.js';
 
 const Doc = (props: DocProps) => {
   docSchema.parse(props);

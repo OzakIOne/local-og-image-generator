@@ -1,9 +1,9 @@
 import React from 'react';
-import {containerStyle} from './style/containerstyle';
-import {DocusaurusLogo} from './logo';
-import {Footer, CenterRow} from './components';
-import {DefaultProps} from './types';
-import {defaultSchema} from './validation';
+import {containerStyle} from './style/containerstyle.js';
+import {DocusaurusLogo} from './logo.js';
+import {Footer, CenterRow} from './components/index.js';
+import {DefaultProps} from './types/index.js';
+import {defaultSchema} from './validation/index.js';
 
 const Default = (props: DefaultProps) => {
   defaultSchema.parse(props);

@@ -3,10 +3,10 @@ import {generateImage} from '@ozaki/generate';
 import type {CliOptions} from '@ozaki/types';
 import {promises} from 'fs';
 import type {SatoriOptions} from 'satori';
-import {cliSchema} from './validation';
-import {ResvgOptions} from './settings';
+import {cliSchema} from './validation.js';
+import {ResvgOptions} from './settings.js';
 import {createConfig, generateJSX} from '@ozaki/shared';
-import {fontPath, saveImageToFile} from './utils';
+import {fontPath, saveImageToFile} from './utils.js';
 
 const cli = cac('docusaurus-cli-og-image-generator');
 cli

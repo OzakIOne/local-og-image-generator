@@ -1,9 +1,9 @@
 import React from 'react';
-import {containerStyle} from './style/containerstyle';
-import {DocusaurusLogo} from './logo';
-import {AuthorImage, Footer, Header, Tags} from './components';
-import {BlogProps} from './types';
-import {blogSchema} from './validation';
+import {containerStyle} from './style/containerstyle.js';
+import {DocusaurusLogo} from './logo.js';
+import {AuthorImage, Footer, Header, Tags} from './components/index.js';
+import {BlogProps} from './types/index.js';
+import {blogSchema} from './validation/index.js';
 
 function checkAuthorImage(authorURL: string): boolean {
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);

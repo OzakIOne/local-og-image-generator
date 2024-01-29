@@ -1,11 +1,12 @@
 {
   "name": "@ozaki/generate",
   "version": "1.0.0",
-  "main": "src/index.tsx",
+  "main": "dist/src/index.js",
   "type": "module",
   "scripts": {
     "start": "tsx src/index.tsx",
-    "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
+    "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx",
+    "build": "swc src --out-dir dist"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.0",

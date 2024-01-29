@@ -1,6 +1,6 @@
-export {Blog} from './nodes/blog';
-export {Default} from './nodes/default';
-export {Doc} from './nodes/documentation';
-export {DocusaurusLogo} from './nodes/logo';
+export {Blog} from './nodes/blog.js';
+export {Default} from './nodes/default.js';
+export {Doc} from './nodes/documentation.js';
+export {DocusaurusLogo} from './nodes/logo.js';
 
 export type {BlogProps, DefaultProps, DocProps} from './nodes/types';

@@ -3,7 +3,10 @@
     "baseUrl": ".",
     "moduleResolution": "Bundler",
     "module": "ESNext",
-    "target": "ESNext"
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "target": "ESNext",
+    "outDir": "./dist",
   },
   "extends": "../../tsconfig.json",
 }
