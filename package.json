@@ -11,7 +11,8 @@
   "devDependencies": {
     "@swc/cli": "^0.3.5",
     "@swc/core": "^1.3.107",
-    "@typescript-eslint/parser": "^6.17.0"
+    "@typescript-eslint/parser": "^6.17.0",
+    "turbo": "^1.11.3"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -20,12 +21,11 @@
   "scripts": {
     "cli:dev": "pnpm --filter ./packages/cli run watch",
     "cli:start": "pnpm --filter ./packages/cli run start",
-    "generate:dev": "pnpm --filter ./packages/generate run watch",
-    "generate:start": "pnpm --filter ./packages/generate run start",
     "lint": "pnpm --stream -r run lint",
     "vercel:build": "pnpm --filter ./packages/vercel-edge run build",
     "vercel:dev": "pnpm --filter ./packages/vercel-edge run dev",
-    "vercel:start": "pnpm --filter ./packages/vercel-edge run start"
+    "vercel:start": "pnpm --filter ./packages/vercel-edge run start",
+    "build": "turbo run build"
   },
   "version": "1.0.0"
 }
