@@ -6,6 +6,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": false,
-    "jsx": "react"
+    "jsx": "react",
+    "outDir": "./dist/",
+    "declaration": true,
+    "baseUrl": ".",
+    "noEmit": false,
   },
+  "extends": "../../tsconfig.json",
 }

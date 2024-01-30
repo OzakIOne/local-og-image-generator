@@ -22,7 +22,7 @@ type config = {
   }[];
 };
 
-const createConfig = (config: config) => ({
+const createConfig = (config?: config) => ({
   width: globalConfig.satoriWidth,
   height: globalConfig.satoriHeight,
   ...config,

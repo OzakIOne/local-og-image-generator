@@ -1,9 +1,11 @@
 {
+  "name": "vercel-edge-vanilla",
   "scripts": {
     "start": "vercel dev",
     "deploy": "vercel",
     "debug": "tsx api/index.tsx"
   },
+  "type": "module",
   "dependencies": {
     "@ozaki/shared": "workspace:^",
     "@ozaki/types": "workspace:^",
