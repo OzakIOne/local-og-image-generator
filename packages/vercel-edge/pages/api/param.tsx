@@ -3,6 +3,7 @@ import {NextRequest} from 'next/server';
 import type {ImageOptions} from '@ozaki/types';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import qs from 'qs';
+import {SatoriOptions} from 'next/dist/compiled/@vercel/og/satori';
 
 export const config = {
   runtime: 'edge',
@@ -46,7 +47,7 @@ export default async function handler(req: NextRequest) {
             style: 'normal',
           },
         ],
-      }) as any,
+      }) as SatoriOptions,
     );
   } catch (e) {
     return new Response(`Failed to generate the image`, {
