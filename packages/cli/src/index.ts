@@ -11,10 +11,18 @@ import {fontPath, saveImageToFile} from './utils.js';
 const cli = cac('docusaurus-cli-og-image-generator');
 cli.version('0.0.1');
 
-const generateOGImage = async (options: any, config: any) => {
+const generateOGImage = async (options: CliOptions) => {
   cliSchema.parse(options);
   const jsx = generateJSX(options);
-  const satoriOptions = createConfig(config) as SatoriOptions;
+  const satoriOptions = createConfig({
+    fonts: [
+      {
+        name: 'Roboto',
+        data: await promises.readFile(await fontPath(options)),
+        style: 'normal',
+      },
+    ],
+  }) as SatoriOptions;
   await saveImageToFile(
     options.output,
     await generateImage({Node: jsx, satoriOptions, svgOptions: ResvgOptions}),
@@ -28,15 +36,7 @@ cli
   .option('--description <name>', 'Choose a description')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
-    await generateOGImage(options, {
-      fonts: [
-        {
-          name: 'Roboto',
-          data: await promises.readFile(await fontPath(options.font)),
-          style: 'normal',
-        },
-      ],
-    });
+    await generateOGImage({...options, type: 'doc'});
   });
 
 cli
@@ -49,15 +49,7 @@ cli
   .option('--tags <name>', 'Choose a tag')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
-    await generateOGImage(options, {
-      fonts: [
-        {
-          name: 'Roboto',
-          data: await promises.readFile(await fontPath(options.font)),
-          style: 'normal',
-        },
-      ],
-    });
+    await generateOGImage({...options, type: 'blog'});
   });
 
 cli
@@ -68,15 +60,7 @@ cli
   .option('--moto <name>', 'Choose a moto')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
-    await generateOGImage(options, {
-      fonts: [
-        {
-          name: 'Roboto',
-          data: await promises.readFile(await fontPath(options.font)),
-          style: 'normal',
-        },
-      ],
-    });
+    await generateOGImage({...options, type: 'default'});
   });
 
 cli.parse();
