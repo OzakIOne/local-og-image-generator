@@ -22,6 +22,9 @@
     "build": "tsc",
     "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "type": "module",
   "version": "1.0.0"
 }

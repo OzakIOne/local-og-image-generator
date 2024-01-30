@@ -1,14 +1,13 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
-import type {CliOptions} from '@ozaki/types';
+import type {CliOptions, SatoriOptions} from '@ozaki/types';
 import {promises} from 'fs';
-import type {SatoriOptions} from 'satori';
 import {cliSchema} from './validation.js';
 import {ResvgOptions} from './settings.js';
 import {createConfig, generateJSX} from '@ozaki/shared';
 import {fontPath, saveImageToFile} from './utils.js';
 
-const cli = cac('docusaurus-cli-og-image-generator');
+const cli = cac('image-generator');
 cli.version('0.0.1');
 
 const generateOGImage = async (options: CliOptions) => {
@@ -63,34 +62,5 @@ cli
     await generateOGImage({...options, type: 'default'});
   });
 
+cli.help();
 cli.parse();
-
-// const parsed = cli.parse().options as CliOptions;
-
-// const satoriOptions = createConfig({
-//   fonts: [
-//     {
-//       name: 'Roboto',
-//       data: await promises.readFile(await fontPath(parsed)),
-//       style: 'normal',
-//     },
-//   ],
-// }) as SatoriOptions;
-
-// if (parsed.help === true) {
-//   cli.outputHelp();
-// } else if (typeof parsed.output === 'string') {
-//   cliSchema.parse(parsed);
-
-//   try {
-//     const jsx = generateJSX(parsed);
-//     await saveImageToFile(
-//       parsed.output,
-//       await generateImage({Node: jsx, satoriOptions, svgOptions: ResvgOptions}),
-//     );
-//   } catch (error) {
-//     throw error;
-//   }
-// } else {
-//   throw new Error('Please specify a output path');
-// }

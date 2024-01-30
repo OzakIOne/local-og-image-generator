@@ -1,4 +1,5 @@
 import {BlogProps, DefaultProps, DocProps} from '@ozaki/nodes';
+import type {SatoriOptions} from 'satori';
 
 // TODO faire un autre type pour le web
 // TODO union prop
@@ -14,4 +15,4 @@ interface ImageOptions extends BlogProps, DefaultProps, DocProps {
 
 type ImageType = 'doc' | 'blog' | 'default';
 
-export type {CliOptions, ImageType, ImageOptions};
+export type {CliOptions, ImageType, ImageOptions, SatoriOptions};

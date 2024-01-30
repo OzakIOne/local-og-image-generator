@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "type": "module",
   "dependencies": {
-    "@ozaki/nodes": "workspace:^"
+    "@ozaki/nodes": "workspace:^",
+    "satori": "^0.10.11"
   }
 }
