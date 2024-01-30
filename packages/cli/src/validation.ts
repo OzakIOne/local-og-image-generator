@@ -6,10 +6,6 @@ const cliSchema = z.object({
     required_error: 'Output is required',
     invalid_type_error: 'Output must be a path',
   }),
-  type: z.enum(['doc', 'blog', 'default'], {
-    required_error: 'Type is required',
-    invalid_type_error: 'Must be one of "doc", "blog", or "default"',
-  }),
   font: z.coerce.string().optional(),
   help: z.coerce.boolean().optional(),
 });
