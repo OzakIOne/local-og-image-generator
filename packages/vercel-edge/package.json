@@ -16,7 +16,6 @@
   },
   "name": "@ozaki/web",
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
