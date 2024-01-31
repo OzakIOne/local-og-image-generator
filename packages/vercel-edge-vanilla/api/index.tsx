@@ -1,8 +1,8 @@
 import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
-import type {ImageOptions} from '@ozaki/types';
+import type {ImageOptions, SatoriOptions} from '@ozaki/types';
 // TODO either import the code from the package or import the package
-// import {createConfig, generateJSX} from '@ozaki/shared';
+import {createConfig} from '@ozaki/shared';
 import qs from 'qs';
 import React from 'react';
 
@@ -58,11 +58,7 @@ export default async function handler(req: VercelRequest) {
           {props.title}
         </div>
       ),
-      // createConfig() as SatoriOptions,
-      {
-        width: 1200,
-        height: 650,
-      },
+      createConfig() as SatoriOptions,
     );
   } catch (e) {
     return new Response(`Failed to generate the image`, {
