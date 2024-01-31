@@ -18,9 +18,9 @@
     "format": "prettier --write src/*.tsx",
     "lint": "eslint src/*.tsx",
     "lint:fix": "eslint src/*.tsx --fix",
-    "start": "tsx src/index.tsx",
+    "start": "tsx src/index.ts",
     "build": "tsc",
-    "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
+    "watch": "nodemon -w src/index.ts --exec tsx src/index.ts"
   },
   "engines": {
     "node": ">=8.0.0"
