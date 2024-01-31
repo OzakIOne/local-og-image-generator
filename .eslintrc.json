@@ -11,8 +11,15 @@
     "no-return-await": "error",
     "node/no-unsupported-features/es-syntax": "off",
     "@typescript-eslint/no-explicit-any": "warn",
-    "node/no-extraneous-import": "warn",
     "node/no-unsupported-features/node-builtins": "warn",
+    "node/no-extraneous-import": [
+      "error",
+      {
+        "allowModules": [
+          "react"
+        ]
+      }
+    ],
     "node/no-missing-import": [
       "off"
     ]
