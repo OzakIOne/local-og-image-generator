@@ -1,11 +1,8 @@
 import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
 import type {ImageOptions, SatoriOptions} from '@ozaki/types';
-// TODO either import the code from the package or import the package
 import {createConfig, generateJSX} from '@ozaki/shared';
 import qs from 'qs';
-
-// TODO marche pas meme avec minimal repro de lautre repo, voir si cest possible sans hono
 
 export const config = {
   runtime: 'edge',
