@@ -2,9 +2,8 @@ import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
 import type {ImageOptions, SatoriOptions} from '@ozaki/types';
 // TODO either import the code from the package or import the package
-import {createConfig} from '@ozaki/shared';
+import {createConfig, generateJSX} from '@ozaki/shared';
 import qs from 'qs';
-import React from 'react';
 
 // TODO marche pas meme avec minimal repro de lautre repo, voir si cest possible sans hono
 
@@ -42,22 +41,7 @@ export default async function handler(req: VercelRequest) {
     } as ImageOptions;
 
     return new ImageResponse(
-      (
-        <div
-          style={{
-            fontSize: 40,
-            color: 'black',
-            background: 'white',
-            width: '100%',
-            height: '100%',
-            padding: '50px 200px',
-            textAlign: 'center',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          {props.title}
-        </div>
-      ),
+      generateJSX(props),
       createConfig() as SatoriOptions,
     );
   } catch (e) {
