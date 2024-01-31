@@ -1,7 +1,7 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
 import type {CliOptions, SatoriOptions} from '@ozaki/types';
-import {promises} from 'fs';
+import {readFile} from 'fs/promises';
 import {cliSchema} from './validation.js';
 import {ResvgOptions} from './settings.js';
 import {createConfig, generateJSX} from '@ozaki/shared';
@@ -17,7 +17,7 @@ const generateOGImage = async (options: CliOptions) => {
     fonts: [
       {
         name: 'Roboto',
-        data: await promises.readFile(await fontPath(options)),
+        data: await readFile(await fontPath(options)),
         style: 'normal',
       },
     ],

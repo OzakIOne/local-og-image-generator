@@ -12,18 +12,18 @@
     "tsx": "^4.7.0",
     "zod": "^3.22.4"
   },
-  "main": "dist/src/index.tsx",
+  "main": "dist/index.js",
   "name": "@ozaki/cli",
   "scripts": {
-    "format": "prettier --write src/*.tsx",
-    "lint": "eslint src/*.tsx",
-    "lint:fix": "eslint src/*.tsx --fix",
+    "format": "prettier --write src/*.ts",
+    "lint": "eslint src/*.ts",
+    "lint:fix": "eslint src/*.ts --fix",
     "start": "tsx src/index.ts",
     "build": "tsc",
     "watch": "nodemon -w src/index.ts --exec tsx src/index.ts"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=18.0.0"
   },
   "type": "module",
   "version": "1.0.0"
