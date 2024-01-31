@@ -15,7 +15,8 @@
   "main": "dist/index.js",
   "name": "@ozaki/cli",
   "scripts": {
-    "format": "prettier --write src/*.ts",
+    "format": "prettier --check src/*.ts",
+    "format:fix": "prettier --write src/*.ts",
     "lint": "eslint src/*.ts",
     "lint:fix": "eslint src/*.ts --fix",
     "start": "tsx src/index.ts",

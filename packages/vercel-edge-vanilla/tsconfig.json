@@ -10,7 +10,7 @@
     "outDir": "./dist/",
     "declaration": true,
     "baseUrl": ".",
-    "noEmit": false,
+    "noEmit": false
   },
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.json"
 }

@@ -15,8 +15,7 @@ const fileExists = async (path: string): Promise<string> => {
     await fs.promises.access(path, fs.promises.constants.F_OK);
     return path;
   } catch (error) {
-    console.error('Error accessing file:', error);
-    throw new Error('File does not exist.');
+    throw new Error('File does not exist.', error as ErrorOptions);
   }
 };
 

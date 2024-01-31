@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {PathLike} from 'fs';
 import {writeFile} from 'fs/promises';
 import {fileExists} from './validation.js';

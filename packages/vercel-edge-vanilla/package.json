@@ -3,7 +3,10 @@
   "scripts": {
     "start": "vercel dev",
     "deploy": "vercel",
-    "debug": "tsx api/index.tsx"
+    "debug": "tsx api/index.tsx",
+    "lint": "eslint --ext .tsx .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "type": "module",
   "dependencies": {
