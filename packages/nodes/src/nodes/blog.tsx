@@ -16,7 +16,9 @@ const Blog = (props: BlogProps) => {
     <div style={containerStyle}>
       <Header>
         <DocusaurusLogo size={150} />
-        {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
+        {props.title && (
+          <div style={{marginLeft: '2rem'}}>{props.title || 'Blog title'}</div>
+        )}
       </Header>
       <div
         style={{
@@ -31,7 +33,10 @@ const Blog = (props: BlogProps) => {
           }}>
           <Footer>
             {props.authorURL && checkAuthorImage(props.authorURL) && (
-              <AuthorImage size={96} author={props.authorURL} />
+              <AuthorImage
+                size={96}
+                author={props.authorURL || 'https://github.com/ozakione.png'}
+              />
             )}
             {props.author && (
               <div
@@ -40,7 +45,7 @@ const Blog = (props: BlogProps) => {
                   alignItems: 'center',
                   marginLeft: '1rem',
                 }}>
-                {props.author}
+                {props.author || 'ozakione'}
               </div>
             )}
           </Footer>

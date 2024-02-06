@@ -12,7 +12,11 @@ const Doc = (props: DocProps) => {
     <div style={containerStyle}>
       <Header>
         <DocusaurusLogo size={150} />
-        {props.title && <div style={{marginLeft: '2rem'}}>{props.title}</div>}
+        {props.title && (
+          <div style={{marginLeft: '2rem'}}>
+            {props.title || 'Documentation title'}
+          </div>
+        )}
       </Header>
       <div
         style={{
@@ -24,7 +28,11 @@ const Doc = (props: DocProps) => {
             flexDirection: 'column',
             marginLeft: '2rem',
           }}>
-          <Footer>{props.description && <div>{props.description}</div>}</Footer>
+          <Footer>
+            {props.description && (
+              <div>{props.description || 'Documentation description'}</div>
+            )}
+          </Footer>
         </div>
       </div>
     </div>

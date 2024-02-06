@@ -96,6 +96,9 @@ importers:
       '@ozaki/types':
         specifier: workspace:^
         version: link:../types
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
 
   packages/types:
     dependencies:

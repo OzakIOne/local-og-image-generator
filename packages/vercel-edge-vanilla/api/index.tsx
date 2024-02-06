@@ -1,7 +1,7 @@
 import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
 import type {ImageOptions, SatoriOptions} from '@ozaki/types';
-import {createConfig, generateJSX} from '@ozaki/shared';
+import {createConfig, generateJSX, typeSchema} from '@ozaki/shared';
 import qs from 'qs';
 
 export const config = {
@@ -19,14 +19,17 @@ export default async function handler(req: VercelRequest) {
     const {searchParams} = new URL(req.url);
 
     const param = qs.parse(searchParams.toString());
+    // TODO validate param
+    typeSchema.parse(param);
 
-    const title = param.title || 'My default title';
-    const description = param.description || 'My default description';
-    const author = param.author || 'ozakione';
-    const authorURL = param.authorurl || 'https://github.com/ozakione.png';
+    const title = param.title;
+    const description = param.description;
+    const author = param.author;
+    const authorURL = param.authorurl;
     const moto = param.moto;
     const tags = Array.isArray(param.tags) ? param.tags : [];
-    const type = param.type || 'default';
+    const type = param.type;
+    // TODO verifier le schema en fonction du type
     const props = {
       type,
       title,
