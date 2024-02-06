@@ -42,7 +42,6 @@ cli
   .command('blog', 'Generate a OG image for a blog page')
   .option('--output <path>', 'Choose a path where to generate the OG images')
   .option('--title <name>', 'Choose a title')
-  .option('--description <name>', 'Choose a description')
   .option('--author <name>', 'Choose an author')
   .option('--authorURL <name>', 'Choose an author URL')
   .option('--tags <name>', 'Choose a tag')
