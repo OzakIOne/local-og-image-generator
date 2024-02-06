@@ -18,9 +18,9 @@ This project is a simple tool to generate Open Graph images for your website
 ![Blog image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=blog)
 
 - title
-- description
 - authorURL (author's profile picture, must be a link to an image)
 - author (author's name)
+- tags (array of tags)
 
 #### Default
 

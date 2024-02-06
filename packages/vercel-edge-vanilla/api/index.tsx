@@ -45,8 +45,9 @@ export default async function handler(req: VercelRequest) {
       createConfig() as SatoriOptions,
     );
   } catch (e) {
-    return new Error(`Failed to generate the image`, {
-      cause: e as Error,
+    console.error(e);
+    return new Response(`Failed to generate the image`, {
+      status: 500,
     });
   }
 }
