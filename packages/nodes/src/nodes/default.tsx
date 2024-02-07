@@ -17,7 +17,7 @@ const Default = (props: DefaultProps) => {
           fontWeight: 'bold',
           justifyContent: 'center',
         }}>
-        {props.title && <div>{props.title || 'Docusaurus'}</div>}
+        <div>{props.title || 'Docusaurus'}</div>
       </div>
       <CenterRow>
         <DocusaurusLogo size={300} />
@@ -35,15 +35,9 @@ const Default = (props: DefaultProps) => {
               color: 'gray',
               marginBottom: '2rem',
             }}>
-            {props.description && (
-              <div>
-                {props.description || 'Build optimized websites quickly'}
-              </div>
-            )}
+            <div>{props.description || 'Build optimized websites quickly'}</div>
           </div>
-          <Footer>
-            {props.moto && <div>{props.moto || 'focus on your content'}</div>}
-          </Footer>
+          <Footer>{<div>{props.moto || 'focus on your content'}</div>}</Footer>
         </div>
       </CenterRow>
     </div>
