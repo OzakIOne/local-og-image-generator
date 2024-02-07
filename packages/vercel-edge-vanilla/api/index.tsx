@@ -19,8 +19,13 @@ export default async function handler(req: VercelRequest) {
     const {searchParams} = new URL(req.url);
 
     const param = qs.parse(searchParams.toString());
-    // TODO validate param
-    typeSchema.parse(param.type);
+    try {
+      typeSchema.parse(param.type);
+    } catch (error) {
+      return new Response(`Invalid type: ${param.type}, error : ${error}`, {
+        status: 400,
+      });
+    }
 
     const title = param.title;
     const description = param.description;
@@ -29,7 +34,6 @@ export default async function handler(req: VercelRequest) {
     const moto = param.moto;
     const tags = Array.isArray(param.tags) ? param.tags : [];
     const type = param.type;
-    // TODO verifier le schema en fonction du type
     const props = {
       type,
       title,
@@ -45,8 +49,11 @@ export default async function handler(req: VercelRequest) {
       createConfig() as SatoriOptions,
     );
   } catch (e) {
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
+    return new Response(
+      `Failed to generate the image, make sure all the parameters are correct. Error: ${e}`,
+      {
+        status: 500,
+      },
+    );
   }
 }
