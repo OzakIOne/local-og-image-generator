@@ -12,7 +12,6 @@ cli.version('0.0.1');
 
 const generateOGImage = async (options: CliOptions) => {
   cliSchema.parse(options);
-  const jsx = generateJSX(options);
   const satoriOptions = createConfig({
     fonts: [
       {
@@ -24,7 +23,11 @@ const generateOGImage = async (options: CliOptions) => {
   }) as SatoriOptions;
   await saveImageToFile(
     options.output,
-    await generateImage({Node: jsx, satoriOptions, svgOptions: ResvgOptions}),
+    await generateImage({
+      Node: generateJSX(options),
+      satoriOptions,
+      svgOptions: ResvgOptions,
+    }),
   );
 };
 

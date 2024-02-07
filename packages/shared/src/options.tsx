@@ -1,16 +1,11 @@
 import {Blog, Default, Doc} from '@ozaki/nodes';
-import {ImageOptions} from '@ozaki/types';
+import {ImageOptions, ImageType} from '@ozaki/types';
 import React from 'react';
 import {z} from 'zod';
 
-// {
-//   'doc':{
-//     component: <Doc {...options} />,
-//     propsValidation: docschema
-//   }
-// }
-
 const typeSchema = z.enum(['doc', 'blog', 'default']);
+
+// TODO keep validation here or in components ?
 
 const docSchema = z.object({
   title: z.string({
@@ -45,10 +40,15 @@ const blogSchema = z.object({
   tags: z.array(z.string()).or(z.string()).optional(),
 });
 
-// TODO remove if, check the type ine web / cli
-// it should just render jsx
+type NodeMap = {
+  [key in ImageType]: {
+    component: React.ReactElement;
+    propsValidation: z.ZodObject<any, any>;
+  };
+};
+
 const generateJSX = (options: ImageOptions) => {
-  const nodeMap = {
+  const nodeMap: NodeMap = {
     doc: {
       component: <Doc />,
       propsValidation: docSchema,
@@ -62,13 +62,13 @@ const generateJSX = (options: ImageOptions) => {
       propsValidation: defaultSchema,
     },
   };
-
-  const node = nodeMap[options.type];
-  if (!node) {
-    throw new Error(`Unknown type: ${options.type}`);
+  try {
+    const node = nodeMap[options.type];
+    node.propsValidation.parse(options);
+    return React.cloneElement(node.component, options);
+  } catch (error) {
+    throw new Error(`Failed to generate jsx`, {cause: error as Error});
   }
-  node.propsValidation.parse(options);
-  return React.cloneElement(node.component, options);
 };
 
 const globalConfig = {

@@ -23,7 +23,7 @@ export default async function handler(req: VercelRequest) {
       typeSchema.parse(param.type);
     } catch (error) {
       return new Response(`Invalid type: ${param.type}, error : ${error}`, {
-        status: 400,
+        status: 500,
       });
     }
 
