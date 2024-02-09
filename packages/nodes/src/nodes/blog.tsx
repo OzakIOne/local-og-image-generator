@@ -4,78 +4,43 @@ import {DocusaurusLogo} from './logo.js';
 import {AuthorImage, Footer, Header, Tags} from './components/index.js';
 import {BlogProps} from './types/index.js';
 
-async function isImageValid(authorURL: string | undefined): Promise<boolean> {
-  if (authorURL === undefined) {
-    return false;
-  } else if (authorURL === '') {
-    return true;
-  } else {
-    try {
-      const response = await fetch(authorURL);
-      return response.headers.get('content-type')?.startsWith('image') ?? false;
-    } catch (error) {
-      return false;
-    }
-  }
-}
-
 const Blog = (props: BlogProps) => {
-  let isValidImage: boolean | undefined;
-
-  if (props.authorURL) {
-    isImageValid(props.authorURL)
-      .then((result) => {
-        isValidImage = result;
-        renderContent();
-      })
-      .catch(() => {
-        isValidImage = false;
-        renderContent();
-      });
-  }
-
-  const renderContent = () => {
-    return (
-      <div style={containerStyle}>
-        <Header>
-          <DocusaurusLogo size={150} />
-          <div style={{marginLeft: '2rem'}}>{props.title || 'Blog title'}</div>
-        </Header>
+  return (
+    <div style={containerStyle}>
+      <Header>
+        <DocusaurusLogo size={150} />
+        <div style={{marginLeft: '2rem'}}>{props.title || 'Blog title'}</div>
+      </Header>
+      <div
+        style={{
+          display: 'flex',
+          marginTop: '4rem',
+        }}>
         <div
           style={{
             display: 'flex',
-            marginTop: '4rem',
+            flexDirection: 'column',
+            marginLeft: '2rem',
           }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginLeft: '2rem',
-            }}>
-            <Footer>
-              {isValidImage && (
-                <AuthorImage
-                  size={96}
-                  author={props.authorURL || 'https://github.com/ozakione.png'}
-                />
-              )}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginLeft: '1rem',
-                }}>
-                {props.author || 'ozakione'}
-              </div>
-            </Footer>
-          </div>
+          <Footer>
+            <AuthorImage
+              size={96}
+              author={props.authorURL || 'https://github.com/ozakione.png'}
+            />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginLeft: '1rem',
+              }}>
+              {props.author || 'ozakione'}
+            </div>
+          </Footer>
         </div>
-        {props.tags && <Tags tags={props.tags}></Tags>}
       </div>
-    );
-  };
-
-  return renderContent();
+      {props.tags && <Tags tags={props.tags}></Tags>}
+    </div>
+  );
 };
 
 export {Blog};
