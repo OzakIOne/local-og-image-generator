@@ -18,8 +18,7 @@ export default async function handler(req: VercelRequest) {
   try {
     const {searchParams} = new URL(req.url);
 
-    const param = qs.parse(searchParams.toString(), {comma: true});
-    console.log('param:', param);
+    const param = qs.parse(searchParams.toString());
     try {
       typeSchema.parse(param.type);
     } catch (error) {
@@ -33,8 +32,7 @@ export default async function handler(req: VercelRequest) {
     const author = param.author;
     const authorURL = param.authorurl;
     const moto = param.moto;
-    const tags = Array.isArray(param.tags) ? param.tags : [];
-    console.log('tags:', tags);
+    const tags = param.tags;
     const type = param.type;
     const props = {
       type,

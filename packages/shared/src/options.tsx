@@ -36,7 +36,10 @@ const blogSchema = z.object({
     required_error: 'Author is required',
     invalid_type_error: 'Author must be a string to a URL or an empty string',
   }),
-  tags: z.array(z.string()).or(z.string()).optional(),
+  tags: z
+    .array(z.string())
+    .or(z.string().transform((e) => new Array(e)))
+    .optional(),
 });
 
 type NodeMap = {
