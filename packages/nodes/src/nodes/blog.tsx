@@ -7,6 +7,8 @@ import {BlogProps} from './types/index.js';
 function isImageValid(authorURL: string | undefined): boolean {
   if (authorURL === undefined) {
     return false;
+  } else if (authorURL === '') {
+    return true;
   }
 
   return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
