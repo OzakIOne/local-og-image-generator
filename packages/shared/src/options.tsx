@@ -65,7 +65,7 @@ const generateJSX = (options: ImageOptions) => {
     node.propsValidation.parse(options);
     return React.cloneElement(node.component, options);
   } catch (error) {
-    throw new Error(`Failed to generate jsx`, {cause: error as Error});
+    throw new Error(`Failed to generate jsx ${error}`, {cause: error as Error});
   }
 };
 
