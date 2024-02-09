@@ -5,8 +5,6 @@ import {z} from 'zod';
 
 const typeSchema = z.enum(['doc', 'blog', 'default']);
 
-// TODO keep validation here or in components ?
-
 const docSchema = z.object({
   title: z.string({
     required_error: 'Title is required',
