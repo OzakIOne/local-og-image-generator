@@ -5,7 +5,7 @@ import {AuthorImage, Footer, Header, Tags} from './components/index.js';
 import {BlogProps} from './types/index.js';
 
 function isImageValid(authorURL: string | undefined): boolean {
-  if (!authorURL) {
+  if (authorURL === undefined) {
     return false;
   }
 
