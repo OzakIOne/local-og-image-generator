@@ -28,12 +28,13 @@ const blogSchema = z.object({
     required_error: 'Title is required',
     invalid_type_error: 'Title must be a string',
   }),
-  author: z.union([z.string().url(), z.literal('')], {
+  author: z.string({
+    required_error: 'Author is required',
+    invalid_type_error: 'Author must be a string',
+  }),
+  authorURL: z.union([z.string().url(), z.literal('')], {
     required_error: 'Author is required',
     invalid_type_error: 'Author must be a string to a URL or an empty string',
-  }),
-  authorURL: z.string().url({
-    message: 'Author URL must be a valid URL to an image',
   }),
   tags: z.array(z.string()).or(z.string()).optional(),
 });
