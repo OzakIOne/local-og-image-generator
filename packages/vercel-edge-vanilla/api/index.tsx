@@ -52,7 +52,7 @@ export default async function handler(req: VercelRequest) {
     );
   } catch (e) {
     return new Response(
-      `Failed to generate the image, make sure all the parameters are correct. Error: ${e}`,
+      `Failed to generate the image, make sure all the parameters are correct. ${e}`,
       {
         status: 500,
       },
