@@ -4,6 +4,7 @@
     "start": "vercel dev",
     "deploy": "vercel",
     "lint": "eslint --ext .tsx .",
+    "lint:fix": "eslint --ext .tsx . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write ."
   },
