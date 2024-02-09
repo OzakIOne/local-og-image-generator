@@ -7,7 +7,8 @@ interface BlogProps extends DocProps {
   authorURL?: string;
   tags?: string[];
 }
-
+// TODO z.infer<typeof docSchema>
+// https://www.remotion.dev/docs/schemas
 type DocProps = {
   title?: string;
   description?: string;

@@ -1,10 +1,13 @@
 import {Blog, Default, Doc} from '@ozaki/nodes';
-import {ImageOptions, ImageType} from '@ozaki/types';
-import React from 'react';
+import {ImageOptions} from '@ozaki/types';
 import {z} from 'zod';
 
 const typeSchema = z.enum(['doc', 'blog', 'default']);
 
+// TODO put default values in scehma
+// TODO reject non known query params
+// TODO put optionals in shcema
+// TODO put title strictly required
 const docSchema = z.object({
   title: z.string({
     required_error: 'Title is required',
@@ -42,32 +45,26 @@ const blogSchema = z.object({
     .optional(),
 });
 
-type NodeMap = {
-  [key in ImageType]: {
-    component: React.ReactElement;
-    propsValidation: z.ZodObject<any, any>;
-  };
-};
+const typeMap = {
+  doc: {
+    component: Doc,
+    propsValidation: docSchema,
+  },
+  blog: {
+    component: Blog,
+    propsValidation: blogSchema,
+  },
+  default: {
+    component: Default,
+    propsValidation: defaultSchema,
+  },
+} as const;
 
 const generateJSX = (options: ImageOptions) => {
-  const nodeMap: NodeMap = {
-    doc: {
-      component: <Doc />,
-      propsValidation: docSchema,
-    },
-    blog: {
-      component: <Blog />,
-      propsValidation: blogSchema,
-    },
-    default: {
-      component: <Default />,
-      propsValidation: defaultSchema,
-    },
-  };
   try {
-    const node = nodeMap[options.type];
+    const node = typeMap[options.type];
     node.propsValidation.parse(options);
-    return React.cloneElement(node.component, options);
+    return node.component;
   } catch (error) {
     throw new Error(`Failed to generate jsx: ${error}`);
   }
@@ -94,4 +91,4 @@ const createConfig = (config?: config) => ({
   debug: true,
 });
 
-export {generateJSX, globalConfig, createConfig, typeSchema};
+export {generateJSX, globalConfig, createConfig, typeSchema, typeMap};

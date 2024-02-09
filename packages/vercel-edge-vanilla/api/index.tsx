@@ -1,8 +1,9 @@
 import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
-import type {ImageOptions, SatoriOptions} from '@ozaki/types';
-import {createConfig, generateJSX, typeSchema} from '@ozaki/shared';
+import type {SatoriOptions} from '@ozaki/types';
+import {createConfig, typeSchema, typeMap} from '@ozaki/shared';
 import qs from 'qs';
+import React from 'react';
 
 export const config = {
   runtime: 'edge',
@@ -12,42 +13,34 @@ export const config = {
 //   new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
 // ).then((res) => res.arrayBuffer());
 
+function parseType(type: unknown) {
+  return typeSchema.parse(type);
+}
+
+function parseProps(props: unknown, schema) {
+  return schema.parse(props);
+}
+
 export default async function handler(req: VercelRequest) {
   // const fontData = await font;
 
   try {
-    const {searchParams} = new URL(req.url);
+    const {search} = new URL(req.url);
+    const param = qs.parse(search.slice(1));
+    const type = parseType(param.type);
+    const config = typeMap[type];
 
-    const param = qs.parse(searchParams.toString());
-    try {
-      typeSchema.parse(param.type);
-    } catch (error) {
-      return new Response(`Invalid type: ${param.type}, error : ${error}`, {
-        status: 500,
-      });
+    if (!config) {
+      throw new Error(`Unexpected missing config`);
     }
 
-    const title = param.title;
-    const description = param.description;
-    const author = param.author;
-    const authorURL = param.authorurl;
-    const moto = param.moto;
-    const tags = param.tags;
-    const type = param.type;
-    const props = {
-      type,
-      title,
-      description,
-      author,
-      authorURL,
-      moto,
-      tags: [tags].flat(),
-    } as ImageOptions;
+    const props = parseProps(param, config.propsValidation);
 
-    return new ImageResponse(
-      generateJSX(props),
-      createConfig() as SatoriOptions,
-    );
+    const Component = config.component;
+
+    const jsx = <Component {...props} />;
+
+    return new ImageResponse(jsx, createConfig() as SatoriOptions);
   } catch (e) {
     return new Response(
       `Failed to generate the image, make sure all the parameters are correct. ${e}`,
