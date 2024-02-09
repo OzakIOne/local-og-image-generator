@@ -19,6 +19,7 @@ export default async function handler(req: VercelRequest) {
     const {searchParams} = new URL(req.url);
 
     const param = qs.parse(searchParams.toString(), {comma: true});
+    console.log('param:', param);
     try {
       typeSchema.parse(param.type);
     } catch (error) {
