@@ -4,14 +4,20 @@ import {DocusaurusLogo} from './logo.js';
 import {AuthorImage, Footer, Header, Tags} from './components/index.js';
 import {BlogProps} from './types/index.js';
 
-function isImageValid(authorURL: string | undefined): boolean {
+function isImageValid(authorURL: string | undefined): React.ReactNode {
   if (authorURL === undefined) {
     return false;
   } else if (authorURL === '') {
     return true;
+  } else {
+    fetch(authorURL)
+      .then(
+        (res) => res.headers.get('content-type')?.startsWith('image') ?? false,
+      )
+      .catch(() => {
+        return false;
+      });
   }
-
-  return /^https?:\/\/(?:www\.)?\S+\.(png|jpe?g|gif|bmp)$/i.test(authorURL);
 }
 
 const Blog = (props: BlogProps) => {
