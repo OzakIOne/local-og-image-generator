@@ -3,7 +3,6 @@ import {containerStyle} from './style/containerstyle.js';
 import {DocusaurusLogo} from './logo.js';
 import {AuthorImage, Footer, Header, Tags} from './components/index.js';
 import {BlogProps} from './types/index.js';
-import {blogSchema} from './validation/index.js';
 
 function isImageValid(authorURL: string | undefined): boolean {
   if (!authorURL) {
@@ -14,8 +13,6 @@ function isImageValid(authorURL: string | undefined): boolean {
 }
 
 const Blog = (props: BlogProps) => {
-  blogSchema.parse(props);
-
   return (
     <div style={containerStyle}>
       <Header>

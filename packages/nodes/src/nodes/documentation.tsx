@@ -3,11 +3,8 @@ import {containerStyle} from './style/containerstyle.js';
 import {DocusaurusLogo} from './logo.js';
 import {Footer, Header} from './components/index.js';
 import {DocProps} from './types/index.js';
-// import {docSchema} from './validation/index.js';
 
 const Doc = (props: DocProps) => {
-  // docSchema.parse(props);
-
   return (
     <div style={containerStyle}>
       <Header>
