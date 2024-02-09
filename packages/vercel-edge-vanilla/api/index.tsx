@@ -34,6 +34,7 @@ export default async function handler(req: VercelRequest) {
     const authorURL = param.authorurl;
     const moto = param.moto;
     const tags = Array.isArray(param.tags) ? param.tags : [];
+    console.log('tags:', tags);
     const type = param.type;
     const props = {
       type,
