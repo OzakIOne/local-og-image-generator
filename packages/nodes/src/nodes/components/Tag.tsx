@@ -15,16 +15,20 @@ const Tag = (props: PropsWithChildren) => (
   </div>
 );
 
-const Tags = ({tags}: {tags: string[]}) => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'row-reverse',
-      marginTop: '2rem',
-      marginRight: '2rem',
-    }}>
-    {tags && [tags].flat().map((el) => <Tag>{el}</Tag>)}
-  </div>
-);
+const Tags = ({tags}: {tags: string[]}) => {
+  const filteredTags = new Set(tags);
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row-reverse',
+        marginTop: '2rem',
+        marginRight: '2rem',
+      }}>
+      {tags && [...filteredTags].map((el) => <Tag>{el}</Tag>)}
+    </div>
+  );
+};
 
 export {Tags};
