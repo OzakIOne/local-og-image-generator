@@ -9,7 +9,7 @@ const Blog = (props: BlogProps) => {
     <div style={containerStyle}>
       <Header>
         <DocusaurusLogo size={150} />
-        <div style={{marginLeft: '2rem'}}>{props.title || 'Blog title'}</div>
+        <div style={{marginLeft: '2rem'}}>{props.title}</div>
       </Header>
       <div
         style={{
@@ -23,17 +23,14 @@ const Blog = (props: BlogProps) => {
             marginLeft: '2rem',
           }}>
           <Footer>
-            <AuthorImage
-              size={96}
-              author={props.authorURL || 'https://github.com/ozakione.png'}
-            />
+            <AuthorImage size={96} author={props.authorURL} />
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 marginLeft: '1rem',
               }}>
-              {props.author || 'ozakione'}
+              {props.author}
             </div>
           </Footer>
         </div>

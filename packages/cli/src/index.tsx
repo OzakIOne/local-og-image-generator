@@ -4,13 +4,33 @@ import type {CliOptions, SatoriOptions} from '@ozaki/types';
 import {readFile} from 'fs/promises';
 import {cliSchema} from './validation.js';
 import {ResvgOptions} from './settings.js';
-import {createConfig, generateJSX} from '@ozaki/shared';
+import {createConfig, typeMap, typeSchema} from '@ozaki/shared';
 import {fontPath, saveImageToFile} from './utils.js';
+import React from 'react';
 
 const cli = cac('image-generator');
 cli.version('0.0.1');
 
+function parseType(type: unknown) {
+  return typeSchema.parse(type);
+}
+
+function parseProps(props: unknown, schema: any) {
+  return schema.parse(props);
+}
+
 const generateOGImage = async (options: CliOptions) => {
+  const type = parseType(options.type);
+  const config = typeMap[type];
+
+  if (!config) {
+    throw new Error(`Unexpected missing config`);
+  }
+
+  const props = parseProps(options, config.propsValidation);
+  const Component = config.component;
+  const jsx = <Component {...props} />;
+
   cliSchema.parse(options);
   const satoriOptions = createConfig({
     fonts: [
@@ -24,7 +44,7 @@ const generateOGImage = async (options: CliOptions) => {
   await saveImageToFile(
     options.output,
     await generateImage({
-      Node: generateJSX(options),
+      Node: jsx,
       satoriOptions,
       svgOptions: ResvgOptions,
     }),

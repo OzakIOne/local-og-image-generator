@@ -14,13 +14,13 @@
   "main": "dist/index.js",
   "name": "@ozaki/cli",
   "scripts": {
-    "format": "prettier --check src/*.ts",
-    "format:fix": "prettier --write src/*.ts",
-    "lint": "eslint src/*.ts",
-    "lint:fix": "eslint src/*.ts --fix",
-    "start": "tsx src/index.ts",
+    "format": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "format:fix": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "start": "tsx src/index.tsx",
     "build": "tsc",
-    "watch": "nodemon -w src/index.ts --exec tsx src/index.ts"
+    "watch": "nodemon -w src/index.tsx --exec tsx src/index.tsx"
   },
   "engines": {
     "node": ">=18.0.0"
