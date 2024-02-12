@@ -4,77 +4,71 @@ import {z} from 'zod';
 
 const typeSchema = z.enum(['doc', 'blog', 'default']);
 
-// TODO put default values in scehma
-// TODO reject non known query params
-// TODO put optionals in shcema
-// TODO put title strictly required
-const docSchema = z.object({
-  title: z
-    .string({
+const docSchema = z
+  .object({
+    title: z.string({
       required_error: 'Title is required',
       invalid_type_error: 'Title must be a string',
-    })
-    .optional()
-    .default('Documentation title'),
-  description: z
-    .string({
-      required_error: 'Description is required',
-      invalid_type_error: 'Description must be a string',
-    })
-    .optional()
-    .default('Documentation description'),
-});
+    }),
+    description: z
+      .string({
+        required_error: 'Description is required',
+        invalid_type_error: 'Description must be a string',
+      })
+      .optional()
+      .default('Documentation description'),
+  })
+  .strict();
 
-const defaultSchema = z.object({
-  title: z
-    .string({
+const defaultSchema = z
+  .object({
+    title: z.string({
       required_error: 'Title is required',
       invalid_type_error: 'Title must be a string',
-    })
-    .optional()
-    .default('Default title'),
-  description: z
-    .string({
-      required_error: 'Description is required',
-      invalid_type_error: 'Description must be a string',
-    })
-    .optional()
-    .default('Default description'),
-  moto: z
-    .string({
-      required_error: 'Moto is required',
-      invalid_type_error: 'Moto must be a string',
-    })
-    .optional()
-    .default('Default moto'),
-});
+    }),
+    description: z
+      .string({
+        required_error: 'Description is required',
+        invalid_type_error: 'Description must be a string',
+      })
+      .optional()
+      .default('Default description'),
+    moto: z
+      .string({
+        required_error: 'Moto is required',
+        invalid_type_error: 'Moto must be a string',
+      })
+      .optional()
+      .default('Default moto'),
+  })
+  .strict();
 
-const blogSchema = z.object({
-  title: z
-    .string({
+const blogSchema = z
+  .object({
+    title: z.string({
       required_error: 'Title is required',
       invalid_type_error: 'Title must be a string',
-    })
-    .optional()
-    .default('Blog title'),
-  author: z
-    .string({
-      required_error: 'Author is required',
-      invalid_type_error: 'Author must be a string',
-    })
-    .optional()
-    .default('ozaki'),
-  authorURL: z
-    .union([z.string().url(), z.literal('')], {
-      required_error: 'Author is required',
-      invalid_type_error: 'Author must be a string to a URL or an empty string',
-    })
-    .default('https://github.com/ozakione.png'),
-  tags: z
-    .array(z.string())
-    .or(z.string().transform((e) => new Array(e)))
-    .optional(),
-});
+    }),
+    author: z
+      .string({
+        required_error: 'Author is required',
+        invalid_type_error: 'Author must be a string',
+      })
+      .optional()
+      .default('ozaki'),
+    authorURL: z
+      .union([z.string().url(), z.literal('')], {
+        required_error: 'Author is required',
+        invalid_type_error:
+          'Author must be a string to a URL or an empty string',
+      })
+      .default('https://github.com/ozakione.png'),
+    tags: z
+      .array(z.string())
+      .or(z.string().transform((e) => new Array(e)))
+      .optional(),
+  })
+  .strict();
 
 const typeMap = {
   doc: {
