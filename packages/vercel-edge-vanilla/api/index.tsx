@@ -14,6 +14,7 @@ export const config = {
 // ).then((res) => res.arrayBuffer());
 
 function parseType(type: unknown) {
+  console.log('parsetype type:', type);
   return typeSchema.parse(type);
 }
 
@@ -27,6 +28,7 @@ export default async function handler(req: VercelRequest) {
   try {
     const {search} = new URL(req.url);
     const param = qs.parse(search.slice(1));
+    console.log('param:', param);
     const type = parseType(param.type);
     const config = typeMap[type];
 
@@ -34,10 +36,8 @@ export default async function handler(req: VercelRequest) {
       throw new Error(`Unexpected missing config`);
     }
 
-    const props = parseProps(param, config.propsValidation);
-
     const Component = config.component;
-
+    const props = parseProps(param, config.propsValidation);
     const jsx = <Component {...props} />;
 
     return new ImageResponse(jsx, createConfig() as SatoriOptions);
