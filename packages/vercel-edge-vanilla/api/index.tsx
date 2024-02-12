@@ -33,7 +33,7 @@ export default async function handler(req: VercelRequest) {
     if (!config) {
       throw new Error(`Unexpected missing config`);
     }
-    delete param.type;
+
     const Component = config.component;
     const props = parseProps(param, config.propsValidation);
     const jsx = <Component {...props} />;

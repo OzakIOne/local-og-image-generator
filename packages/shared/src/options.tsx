@@ -18,6 +18,7 @@ const docSchema = z
       .optional()
       .default('Documentation description'),
   })
+  .extend({type: z.string()})
   .strict();
 
 const defaultSchema = z
@@ -41,6 +42,7 @@ const defaultSchema = z
       .optional()
       .default('Default moto'),
   })
+  .extend({type: z.string()})
   .strict();
 
 const blogSchema = z
@@ -68,6 +70,7 @@ const blogSchema = z
       .or(z.string().transform((e) => new Array(e)))
       .optional(),
   })
+  .extend({type: z.string()})
   .strict();
 
 const typeMap = {
