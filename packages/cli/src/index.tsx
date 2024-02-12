@@ -4,16 +4,12 @@ import type {SatoriOptions} from 'satori';
 import {readFile} from 'fs/promises';
 import {cliSchema, cliSchemaType} from './validation.js';
 import {ResvgOptions} from './settings.js';
-import {createConfig, typeMap, typeSchema} from '@ozaki/shared';
+import {createConfig, typeMap, parseType} from '@ozaki/shared';
 import {saveImageToFile} from './utils.js';
 import React from 'react';
 
 const cli = cac('image-generator');
 cli.version('0.0.1');
-
-function parseType(type: unknown) {
-  return typeSchema.parse(type);
-}
 
 function parseProps(props: unknown, schema: any) {
   return schema.merge(cliSchema).parse(props);

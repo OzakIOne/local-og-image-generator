@@ -115,5 +115,9 @@ type defaultType = z.infer<typeof defaultSchema>;
 type blogType = z.infer<typeof blogSchema>;
 type typeImage = z.infer<typeof typeSchema>;
 
-export {globalConfig, createConfig, typeSchema, typeMap};
+function parseType(type: unknown) {
+  return typeSchema.parse(type);
+}
+
+export {globalConfig, createConfig, typeSchema, typeMap, parseType};
 export type {docType, blogType, defaultType, typeImage};

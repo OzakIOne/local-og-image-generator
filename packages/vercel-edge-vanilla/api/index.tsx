@@ -1,6 +1,6 @@
 import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
-import {createConfig, typeSchema, typeMap} from '@ozaki/shared';
+import {createConfig, parseType, typeMap} from '@ozaki/shared';
 import qs from 'qs';
 import React from 'react';
 
@@ -11,10 +11,6 @@ export const config = {
 // const font = fetch(
 //   new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
 // ).then((res) => res.arrayBuffer());
-
-function parseType(type: unknown) {
-  return typeSchema.parse(type);
-}
 
 function parseProps(props: unknown, schema) {
   return schema.parse(props);
