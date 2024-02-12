@@ -16,22 +16,25 @@ function parseType(type: unknown) {
 }
 
 function parseProps(props: unknown, schema: any) {
-  return schema.parse(props);
+  return schema.merge(cliSchema).parse(props);
 }
 
 const generateOGImage = async (options: CliOptions) => {
+  cliSchema.parse({
+    output: options.output,
+    font: options.font,
+    help: options.help,
+  });
   const type = parseType(options.type);
   const config = typeMap[type];
-
   if (!config) {
     throw new Error(`Unexpected missing config`);
   }
 
-  const props = parseProps(options, config.propsValidation);
   const Component = config.component;
+  const props = parseProps(options, config.propsValidation);
   const jsx = <Component {...props} />;
 
-  cliSchema.parse(options);
   const satoriOptions = createConfig({
     fonts: [
       {
