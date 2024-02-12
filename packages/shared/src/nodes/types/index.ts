@@ -1,4 +1,4 @@
-import {docType, blogType, defaultType} from '../../index';
+import {docType, blogType, defaultType} from '../../index.js';
 
 type DefaultProps = defaultType;
 type BlogProps = blogType;

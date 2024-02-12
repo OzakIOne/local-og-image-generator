@@ -2,7 +2,7 @@ import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
 import type {SatoriOptions} from 'satori';
 import {readFile} from 'fs/promises';
-import {cliSchema, cliType} from './validation.js';
+import {cliSchema, cliSchemaType} from './validation.js';
 import {ResvgOptions} from './settings.js';
 import {createConfig, typeMap, typeSchema} from '@ozaki/shared';
 import {saveImageToFile} from './utils.js';
@@ -19,13 +19,15 @@ function parseProps(props: unknown, schema: any) {
   return schema.merge(cliSchema).parse(props);
 }
 
-const generateOGImage = async (options: cliType) => {
-  cliSchema.parse({
+const generateOGImage = async (options: cliSchemaType) => {
+  const cliParams = cliSchema.parse({
     output: options.output,
     font: options.font,
     help: options.help,
+    type: options.type,
   });
-  const type = parseType(options.type);
+
+  const type = parseType(cliParams.type);
   const config = typeMap[type];
   if (!config) {
     throw new Error(`Unexpected missing config`);
@@ -39,7 +41,7 @@ const generateOGImage = async (options: cliType) => {
     fonts: [
       {
         name: 'Roboto',
-        data: await readFile(options.font),
+        data: await readFile(cliParams.font),
         style: 'normal',
       },
     ],

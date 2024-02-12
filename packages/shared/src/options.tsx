@@ -1,4 +1,6 @@
-import {Blog, Default, Doc} from './index';
+import {Blog} from './nodes/blog.js';
+import {Default} from './nodes/default.js';
+import {Doc} from './nodes/documentation.js';
 import {z} from 'zod';
 
 const typeSchema = z.enum(['doc', 'blog', 'default']);

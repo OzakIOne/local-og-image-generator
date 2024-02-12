@@ -1,6 +1,5 @@
 import {z} from 'zod';
-
-type cliType = z.infer<typeof cliSchema>;
+import {typeSchema} from '@ozaki/shared';
 
 const cliSchema = z
   .object({
@@ -8,11 +7,13 @@ const cliSchema = z
       required_error: 'Output is required',
       invalid_type_error: 'Output must be a path',
     }),
-    font: z.coerce.string().optional().default('./src/Roboto-Regular.ttf'),
+    font: z.coerce.string().default('./src/Roboto-Regular.ttf'),
     help: z.coerce.boolean().optional(),
     '--': z.array(z.unknown()).nullish(),
+    type: typeSchema,
   })
-  .extend({type: z.string()})
   .strict();
 
-export {cliSchema, cliType};
+type cliSchemaType = z.infer<typeof cliSchema>;
+
+export {cliSchema, cliSchemaType};
