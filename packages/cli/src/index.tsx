@@ -1,11 +1,11 @@
 import {cac} from 'cac';
 import {generateImage} from '@ozaki/generate';
-import type {CliOptions, SatoriOptions} from '@ozaki/types';
+import type {SatoriOptions} from 'satori';
 import {readFile} from 'fs/promises';
-import {cliSchema} from './validation.js';
+import {cliSchema, cliType} from './validation.js';
 import {ResvgOptions} from './settings.js';
 import {createConfig, typeMap, typeSchema} from '@ozaki/shared';
-import {fontPath, saveImageToFile} from './utils.js';
+import {saveImageToFile} from './utils.js';
 import React from 'react';
 
 const cli = cac('image-generator');
@@ -19,7 +19,7 @@ function parseProps(props: unknown, schema: any) {
   return schema.merge(cliSchema).parse(props);
 }
 
-const generateOGImage = async (options: CliOptions) => {
+const generateOGImage = async (options: cliType) => {
   cliSchema.parse({
     output: options.output,
     font: options.font,
@@ -39,7 +39,7 @@ const generateOGImage = async (options: CliOptions) => {
     fonts: [
       {
         name: 'Roboto',
-        data: await readFile(await fontPath(options)),
+        data: await readFile(options.font),
         style: 'normal',
       },
     ],

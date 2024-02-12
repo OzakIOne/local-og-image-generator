@@ -1,6 +1,5 @@
 import {ImageResponse} from '@vercel/og';
 import type {VercelRequest} from '@vercel/node';
-import type {SatoriOptions} from '@ozaki/types';
 import {createConfig, typeSchema, typeMap} from '@ozaki/shared';
 import qs from 'qs';
 import React from 'react';
@@ -38,7 +37,7 @@ export default async function handler(req: VercelRequest) {
     const props = parseProps(param, config.propsValidation);
     const jsx = <Component {...props} />;
 
-    return new ImageResponse(jsx, createConfig() as SatoriOptions);
+    return new ImageResponse(jsx, createConfig() as any);
   } catch (e) {
     return new Response(
       `Failed to generate the image, make sure all the parameters are correct. ${e}`,

@@ -2,7 +2,6 @@
   "dependencies": {
     "@ozaki/generate": "workspace:^",
     "@ozaki/shared": "workspace:^",
-    "@ozaki/types": "workspace:^",
     "@resvg/resvg-js": "^2.6.0",
     "@types/node": "^20.10.6",
     "cac": "^6.7.14",

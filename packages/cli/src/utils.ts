@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 import {PathLike} from 'fs';
 import {writeFile} from 'fs/promises';
-import {fileExists} from './validation.js';
-import {CliOptions} from '@ozaki/types';
 
 const saveImageToFile = async (outputPath: PathLike, image: Buffer) => {
   try {
@@ -14,17 +12,4 @@ const saveImageToFile = async (outputPath: PathLike, image: Buffer) => {
   }
 };
 
-// TODO  ugly
-const fontPath = async (parsed: CliOptions) => {
-  if (parsed.font === undefined) {
-    return './src/Roboto-Regular.ttf';
-  }
-  const isFontValid = await fileExists(parsed.font);
-  if (isFontValid) {
-    return parsed.font;
-  } else {
-    return './src/Roboto-Regular.ttf';
-  }
-};
-
-export {saveImageToFile, fontPath};
+export {saveImageToFile};

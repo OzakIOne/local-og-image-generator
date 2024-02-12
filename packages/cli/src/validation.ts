@@ -1,5 +1,6 @@
-import fs from 'fs';
 import {z} from 'zod';
+
+type cliType = z.infer<typeof cliSchema>;
 
 const cliSchema = z
   .object({
@@ -7,19 +8,11 @@ const cliSchema = z
       required_error: 'Output is required',
       invalid_type_error: 'Output must be a path',
     }),
-    font: z.coerce.string().optional(),
+    font: z.coerce.string().optional().default('./src/Roboto-Regular.ttf'),
     help: z.coerce.boolean().optional(),
     '--': z.array(z.unknown()).nullish(),
   })
+  .extend({type: z.string()})
   .strict();
 
-const fileExists = async (path: string): Promise<string> => {
-  try {
-    await fs.promises.access(path, fs.promises.constants.F_OK);
-    return path;
-  } catch (error) {
-    throw new Error('File does not exist.', error as ErrorOptions);
-  }
-};
-
-export {fileExists, cliSchema};
+export {cliSchema, cliType};

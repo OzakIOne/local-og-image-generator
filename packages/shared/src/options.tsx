@@ -1,5 +1,4 @@
-import {Blog, Default, Doc} from '@ozaki/nodes';
-import {ImageOptions} from '@ozaki/types';
+import {Blog, Default, Doc} from './index';
 import {z} from 'zod';
 
 const typeSchema = z.enum(['doc', 'blog', 'default']);
@@ -88,16 +87,6 @@ const typeMap = {
   },
 } as const;
 
-const generateJSX = (options: ImageOptions) => {
-  try {
-    const node = typeMap[options.type];
-    node.propsValidation.parse(options);
-    return node.component;
-  } catch (error) {
-    throw new Error(`Failed to generate jsx: ${error}`);
-  }
-};
-
 const globalConfig = {
   satoriWidth: 1200,
   satoriHeight: 650,
@@ -119,4 +108,10 @@ const createConfig = (config?: config) => ({
   debug: true,
 });
 
-export {generateJSX, globalConfig, createConfig, typeSchema, typeMap};
+type docType = z.infer<typeof docSchema>;
+type defaultType = z.infer<typeof defaultSchema>;
+type blogType = z.infer<typeof blogSchema>;
+type typeImage = z.infer<typeof typeSchema>;
+
+export {globalConfig, createConfig, typeSchema, typeMap};
+export type {docType, blogType, defaultType, typeImage};
