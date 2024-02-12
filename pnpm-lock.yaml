@@ -48,9 +48,6 @@ importers:
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared
-      '@ozaki/types':
-        specifier: workspace:^
-        version: link:../types
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.0
@@ -82,31 +79,17 @@ importers:
         specifier: ^0.10.11
         version: 0.10.11
 
-  packages/nodes: {}
-
   packages/shared:
     dependencies:
       zod:
         specifier: ^3.22.4
         version: 3.22.4
 
-  packages/types:
-    dependencies:
-      '@ozaki/nodes':
-        specifier: workspace:^
-        version: link:../nodes
-      satori:
-        specifier: ^0.10.11
-        version: 0.10.11
-
   packages/vercel-edge-vanilla:
     dependencies:
       '@ozaki/shared':
         specifier: workspace:^
         version: link:../shared
-      '@ozaki/types':
-        specifier: workspace:^
-        version: link:../types
       '@types/qs':
         specifier: ^6.9.11
         version: 6.9.11
