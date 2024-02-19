@@ -1,9 +1,11 @@
 import {Blog} from './nodes/blog.js';
 import {Default} from './nodes/default.js';
 import {Doc} from './nodes/documentation.js';
+import {BlogCenter} from './nodes/blogCenter.js';
+import {BlogTop} from './nodes/blogTop.js';
 import {z} from 'zod';
 
-const typeSchema = z.enum(['doc', 'blog', 'default']);
+const typeSchema = z.enum(['doc', 'blog', 'default', 'blogtop', 'blogcenter']);
 
 const docSchema = z
   .object({
@@ -11,13 +13,9 @@ const docSchema = z
       required_error: 'Title is required',
       invalid_type_error: 'Title must be a string',
     }),
-    description: z
-      .string({
-        required_error: 'Description is required',
-        invalid_type_error: 'Description must be a string',
-      })
-      .optional()
-      .default('Documentation description'),
+    description: z.string().optional().default('Documentation description'),
+    logo: z.union([z.string().url(), z.enum(['false'])]).optional(),
+    logowidth: z.number().optional().default(250),
   })
   .extend({type: z.string()})
   .strict();
@@ -28,20 +26,10 @@ const defaultSchema = z
       required_error: 'Title is required',
       invalid_type_error: 'Title must be a string',
     }),
-    description: z
-      .string({
-        required_error: 'Description is required',
-        invalid_type_error: 'Description must be a string',
-      })
-      .optional()
-      .default('Default description'),
-    moto: z
-      .string({
-        required_error: 'Moto is required',
-        invalid_type_error: 'Moto must be a string',
-      })
-      .optional()
-      .default('Default moto'),
+    description: z.string().optional().default('Default description'),
+    tagline: z.string().optional().default('Default tagline'),
+    logo: z.union([z.string().url(), z.enum(['false'])]).optional(),
+    logowidth: z.number().optional().default(150),
   })
   .extend({type: z.string()})
   .strict();
@@ -52,24 +40,52 @@ const blogSchema = z
       required_error: 'Title is required',
       invalid_type_error: 'Title must be a string',
     }),
-    author: z
-      .string({
-        required_error: 'Author is required',
-        invalid_type_error: 'Author must be a string',
-      })
-      .optional()
-      .default('ozaki'),
-    authorURL: z
-      .union([z.string().url(), z.literal('')], {
-        required_error: 'Author is required',
-        invalid_type_error:
-          'Author must be a string to a URL or an empty string',
-      })
-      .default('https://github.com/ozakione.png'),
+    author: z.string().optional().default('ozaki'),
+    authorURL: z.string().url().default('https://github.com/ozakione.png'),
+    logo: z.union([z.string().url(), z.enum(['false'])]).optional(),
+    logowidth: z.number().optional().default(150),
     tags: z
       .array(z.string())
       .or(z.string().transform((e) => new Array(e)))
       .optional(),
+  })
+  .extend({type: z.string()})
+  .strict();
+
+const blogCenter = z
+  .object({
+    title: z.string({
+      required_error: 'Title is required',
+      invalid_type_error: 'Title must be a string',
+    }),
+    logo: z.union([z.string().url(), z.enum(['false'])]).optional(),
+    logowidth: z.number().optional().default(150),
+    text1: z.string().optional().default('text1'),
+    text1size: z.string().optional().default('2rem'),
+    text2: z.string().optional().default('text2'),
+    text2size: z.string().optional().default('2rem'),
+    text3: z.string().optional().default('text3'),
+    text3size: z.string().optional().default('2rem'),
+    textalign: z
+      .enum([
+        'center',
+        'flex-start',
+        'flex-end',
+        'space-between',
+        'space-around',
+      ])
+      .optional()
+      .default('center'),
+    titlealign: z
+      .enum([
+        'center',
+        'flex-start',
+        'flex-end',
+        'space-between',
+        'space-around',
+      ])
+      .optional()
+      .default('center'),
   })
   .extend({type: z.string()})
   .strict();
@@ -86,6 +102,14 @@ const typeMap = {
   default: {
     component: Default,
     propsValidation: defaultSchema,
+  },
+  blogcenter: {
+    component: BlogCenter,
+    propsValidation: blogCenter,
+  },
+  blogtop: {
+    component: BlogTop,
+    propsValidation: blogCenter,
   },
 } as const;
 
@@ -113,6 +137,8 @@ const createConfig = (config?: config) => ({
 type docType = z.infer<typeof docSchema>;
 type defaultType = z.infer<typeof defaultSchema>;
 type blogType = z.infer<typeof blogSchema>;
+type blogCenterType = z.infer<typeof blogCenter>;
+type blogTopType = z.infer<typeof blogCenter>;
 type typeImage = z.infer<typeof typeSchema>;
 
 function parseType(type: unknown) {
@@ -120,4 +146,11 @@ function parseType(type: unknown) {
 }
 
 export {globalConfig, createConfig, typeSchema, typeMap, parseType};
-export type {docType, blogType, defaultType, typeImage};
+export type {
+  docType,
+  blogType,
+  defaultType,
+  blogCenterType,
+  typeImage,
+  blogTopType,
+};

@@ -1,11 +1,13 @@
 import React, {CSSProperties} from 'react';
 
+// TODO type from zod
 type AuthorImageProps = {
   author: string;
   size?: number;
   style?: CSSProperties;
 };
 
+// TODO remove size from here, default value in zod
 const AuthorImage = ({author, size = 64, ...props}: AuthorImageProps) => (
   <img
     src={author}

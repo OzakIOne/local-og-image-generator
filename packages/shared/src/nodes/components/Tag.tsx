@@ -26,7 +26,7 @@ const Tags = ({tags}: {tags: string[]}) => {
         marginTop: '2rem',
         marginRight: '2rem',
       }}>
-      {tags && [...filteredTags].map((el) => <Tag>{el}</Tag>)}
+      {tags && [...filteredTags].map((el) => <Tag key={el}>{el}</Tag>)}
     </div>
   );
 };

@@ -1,10 +1,17 @@
 import React from 'react';
-import {containerStyle} from './style/containerstyle.js';
+import {containerStyle} from './style/containerStyle.js';
 import {DocusaurusLogo} from './logo.js';
 import {Footer, CenterRow} from './components/index.js';
 import {DefaultProps} from './types/index.js';
 
 const Default = (props: DefaultProps) => {
+  const logo =
+    props.logo === 'false' ? null : props.logo ? (
+      <img src={props.logo} alt="logo" style={{width: props.logowidth}} />
+    ) : (
+      <DocusaurusLogo size={props.logowidth} />
+    );
+
   return (
     <div style={containerStyle}>
       <div
@@ -17,7 +24,7 @@ const Default = (props: DefaultProps) => {
         <div>{props.title}</div>
       </div>
       <CenterRow>
-        <DocusaurusLogo size={300} />
+        {logo}
         <div
           style={{
             display: 'flex',
@@ -34,7 +41,7 @@ const Default = (props: DefaultProps) => {
             }}>
             <div>{props.description}</div>
           </div>
-          <Footer>{<div>{props.moto}</div>}</Footer>
+          <Footer>{<div>{props.tagline}</div>}</Footer>
         </div>
       </CenterRow>
     </div>
