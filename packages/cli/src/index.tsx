@@ -57,8 +57,8 @@ cli
   .option('--output <path>', 'Choose a path where to generate the OG images')
   .option('--title <name>', 'Choose a title')
   .option('--description <name>', 'Choose a description')
-  .option('--logo <name>', 'Choose a logo svg string or image url')
-  .option('--logowidth <name>', 'Choose a logo svg string or image url')
+  .option('--logo <name>', 'Choose a logo image url')
+  .option('--logowidth <name>', 'Choose a logo size')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
     await generateOGImage({...options, type: 'doc'});
@@ -70,8 +70,8 @@ cli
   .option('--title <name>', 'Choose a title')
   .option('--author <name>', 'Choose an author')
   .option('--authorURL <name>', 'Choose an author URL')
-  .option('--logo <name>', 'Choose a logo svg string or image url')
-  .option('--logowidth <name>', 'Choose a logo svg string or image url')
+  .option('--logo <name>', 'Choose a logo image url')
+  .option('--logowidth <name>', 'Choose a logo size')
   .option('--tags <name>', 'Choose a tag')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
@@ -83,8 +83,8 @@ cli
   .option('--output <path>', 'Choose a path where to generate the OG images')
   .option('--title <name>', 'Choose a title')
   .option('--description <name>', 'Choose a description')
-  .option('--logo <name>', 'Choose a logo svg string or image url')
-  .option('--logowidth <name>', 'Choose a logo svg string or image url')
+  .option('--logo <name>', 'Choose a logo image url')
+  .option('--logowidth <name>', 'Choose a logo size')
   .option('--tagline <name>', 'Choose a tagline')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
@@ -95,16 +95,19 @@ cli
   .command('blogcenter', 'Generate a OG image for a default page')
   .option('--output <path>', 'Choose a path where to generate the OG images')
   .option('--title <name>', 'Choose a title')
-  .option('--text1 <name>', 'Choose a description')
-  .option('--text1size <name>', 'Choose a description')
-  .option('--text2 <name>', 'Choose a logo svg string or image url')
-  .option('--text2size <name>', 'Choose a logo svg string or image url')
-  .option('--text3 <name>', 'Choose a logo svg string or image url')
-  .option('--text3size <name>', 'Choose a logo svg string or image url')
-  .option('--textalign <name>', 'Choose a logo svg string or image url')
-  .option('--titlealign <name>', 'Choose a logo svg string or image url')
-  .option('--logo <name>', 'Choose a logo svg string or image url')
-  .option('--logowidth <name>', 'Choose a logo svg string or image url')
+  .option('--text1 <name>', 'Choose a description1')
+  .option('--text1size <name>', 'Choose a size for description1')
+  .option('--text2 <name>', 'Choose a description2')
+  .option('--text2size <name>', 'Choose a size for description2')
+  .option('--text3 <name>', 'Choose a description3')
+  .option('--text3size <name>', 'Choose a size for description3')
+  .option(
+    '--titlealign <name>',
+    'Chose to align the title left, right or center',
+  )
+  .option('--textalign <name>', 'Chose to align the text left, right or center')
+  .option('--logo <name>', 'Choose a logo image url')
+  .option('--logowidth <name>', 'Choose a logo size')
 
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
@@ -115,17 +118,19 @@ cli
   .command('blogtop', 'Generate a OG image for a default page')
   .option('--output <path>', 'Choose a path where to generate the OG images')
   .option('--title <name>', 'Choose a title')
-  .option('--text1 <name>', 'Choose a description')
-  .option('--text1size <name>', 'Choose a description')
-  .option('--text2 <name>', 'Choose a logo svg string or image url')
-  .option('--text2size <name>', 'Choose a logo svg string or image url')
-  .option('--text3 <name>', 'Choose a logo svg string or image url')
-  .option('--text3size <name>', 'Choose a logo svg string or image url')
-  .option('--textalign <name>', 'Choose a logo svg string or image url')
-  .option('--titlealign <name>', 'Choose a logo svg string or image url')
-  .option('--logo <name>', 'Choose a logo svg string or image url')
-  .option('--logowidth <name>', 'Choose a logo svg string or image url')
-
+  .option('--text1 <name>', 'Choose a description1')
+  .option('--text1size <name>', 'Choose a size for description1')
+  .option('--text2 <name>', 'Choose a description2')
+  .option('--text2size <name>', 'Choose a size for description2')
+  .option('--text3 <name>', 'Choose a description3')
+  .option('--text3size <name>', 'Choose a size for description3')
+  .option(
+    '--titlealign <name>',
+    'Chose to align the title left, right or center',
+  )
+  .option('--textalign <name>', 'Chose to align the text left, right or center')
+  .option('--logo <name>', 'Choose a logo image url')
+  .option('--logowidth <name>', 'Choose a logo size')
   .option('--font <path>', 'Choose a font path')
   .action(async (options) => {
     await generateOGImage({...options, type: 'blogtop'});
