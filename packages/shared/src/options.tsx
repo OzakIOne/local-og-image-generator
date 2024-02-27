@@ -58,7 +58,7 @@ const blogSchema = z
   .extend({type: z.string()})
   .strict();
 
-const blogCenterTags = z.record(z.string(), z.number()).optional();
+const blogCenterTags = z.record(z.string(), z.coerce.string()).optional();
 
 const blogCenter = z
   .object({
