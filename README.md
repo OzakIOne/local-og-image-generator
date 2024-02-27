@@ -127,7 +127,7 @@ pnpm cli:start blogcenter --output ./blogcenter.png  --title "Title" --tags.reac
 
 ## Customization
 
-You can customize the images by forking the project and modifying the css files in `./packages/shared/src/nodes/style` you can
+You can customize the images by forking the project and modifying the css files in `./packages/shared/src/nodes/style` or you can change the layout by modifying the `./packages/shared/src/nodes` or `./packages/shared/src/nodes/components` files
 
 ## Deploy
 
