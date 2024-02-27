@@ -10,4 +10,10 @@ const containerStyle: CSSProperties = {
   flexDirection: 'column',
 };
 
-export {containerStyle};
+const titleStyle: CSSProperties = {};
+
+const authorStyle: CSSProperties = {};
+
+const authorImageStyle: CSSProperties = {};
+
+export {containerStyle, titleStyle, authorStyle, authorImageStyle};

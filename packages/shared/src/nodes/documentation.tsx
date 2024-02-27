@@ -1,5 +1,9 @@
 import React from 'react';
-import {containerStyle} from './style/containerStyle.js';
+import {
+  containerStyle,
+  titleStyle,
+  descriptionStyle,
+} from './style/documentationStyle.js';
 import {DocusaurusLogo} from './logo.js';
 import {Footer, Header} from './components/index.js';
 import {DocProps} from './types/index.js';
@@ -16,7 +20,7 @@ const Doc = (props: DocProps) => {
     <div style={containerStyle}>
       <Header>
         {logo}
-        <div style={{marginLeft: '2rem'}}>{props.title}</div>
+        <div style={{...titleStyle, marginLeft: '2rem'}}>{props.title}</div>
       </Header>
       <div
         style={{
@@ -28,7 +32,9 @@ const Doc = (props: DocProps) => {
             flexDirection: 'column',
             marginLeft: '2rem',
           }}>
-          <Footer>{<div>{props.description}</div>}</Footer>
+          <Footer>
+            {<div style={{...descriptionStyle}}>{props.description}</div>}
+          </Footer>
         </div>
       </div>
     </div>

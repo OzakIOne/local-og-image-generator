@@ -1,20 +1,25 @@
 import React, {CSSProperties} from 'react';
+import {BlogProps} from '../types/index.js';
 
-// TODO type from zod
-type AuthorImageProps = {
-  author: string;
-  size?: number;
-  style?: CSSProperties;
-};
+interface AuthorImageProps
+  extends Pick<BlogProps, 'authorURL' | 'authorURLSize'> {
+  style: CSSProperties;
+}
 
-// TODO remove size from here, default value in zod
-const AuthorImage = ({author, size = 64, ...props}: AuthorImageProps) => (
+const AuthorImage = ({
+  authorURL,
+  authorURLSize,
+  ...styleProps
+}: AuthorImageProps) => (
   <img
-    src={author}
-    height={size}
-    width={size}
-    style={{width: size, borderRadius: size / 2, ...props.style}}
-    {...props}
+    src={authorURL}
+    height={authorURLSize}
+    width={authorURLSize}
+    style={{
+      width: authorURLSize,
+      borderRadius: authorURLSize / 2,
+      ...styleProps,
+    }}
   />
 );
 

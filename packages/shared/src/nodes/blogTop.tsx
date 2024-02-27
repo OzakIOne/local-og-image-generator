@@ -1,19 +1,20 @@
 import React from 'react';
 import {DocusaurusLogo} from './logo.js';
 import {CenterRow, Header} from './components/index.js';
-import {blogCenterProps} from './types/index.js';
+import {BlogCenterProps} from './types/index.js';
 import {
   titleStyle,
   textStyle,
-  text1Style,
-  text2Style,
-  text3Style,
+  mainContentStyle,
+  subContentStyle,
+  extraContentStyle,
   textContainer,
   titleContainer,
   containerTopStyle,
 } from './style/blogTopStyle.js';
+import {TagsList} from './components/TagsList.js';
 
-const BlogTop = (props: blogCenterProps) => {
+const BlogTop = (props: BlogCenterProps) => {
   const logo =
     props.logo === 'false' ? null : props.logo ? (
       <img src={props.logo} alt="logo" style={{width: props.logowidth}} />
@@ -52,26 +53,26 @@ const BlogTop = (props: blogCenterProps) => {
             <div
               style={{
                 ...textStyle,
-                ...text1Style,
-                fontSize: props.text1size,
+                ...mainContentStyle,
+                fontSize: props.mainContentsize,
               }}>
-              {props.text1}
+              {props.mainContent} {props.tags && <TagsList tags={props.tags} />}
             </div>
             <div
               style={{
                 ...textStyle,
-                ...text2Style,
-                fontSize: props.text2size,
+                ...subContentStyle,
+                fontSize: props.subContentsize,
               }}>
-              {props.text2}
+              {props.subContent}
             </div>
             <div
               style={{
                 ...textStyle,
-                ...text3Style,
-                fontSize: props.text3size,
+                ...extraContentStyle,
+                fontSize: props.extraContentsize,
               }}>
-              {props.text3}
+              {props.extraContent}
             </div>
           </div>
         </div>

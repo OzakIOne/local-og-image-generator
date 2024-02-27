@@ -23,13 +23,17 @@ const titleContainer: CSSProperties = {
   justifyContent: 'flex-start',
 };
 
-const textStyle: CSSProperties = {};
+const textStyle: CSSProperties = {
+  marginTop: '2rem',
+  display: 'flex',
+  alignItems: 'center',
+};
 
-const text1Style: CSSProperties = {};
+const mainContentStyle: CSSProperties = {};
 
-const text2Style: CSSProperties = {};
+const subContentStyle: CSSProperties = {};
 
-const text3Style: CSSProperties = {};
+const extraContentStyle: CSSProperties = {};
 
 const textContainer: CSSProperties = {
   display: 'flex',
@@ -46,9 +50,9 @@ export {
   containerTopStyle,
   titleStyle,
   textStyle,
-  text1Style,
-  text2Style,
-  text3Style,
+  mainContentStyle,
+  subContentStyle,
+  extraContentStyle,
   textContainer,
   titleContainer,
 };

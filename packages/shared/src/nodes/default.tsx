@@ -1,5 +1,10 @@
 import React from 'react';
-import {containerStyle} from './style/containerStyle.js';
+import {
+  containerStyle,
+  titleStyle,
+  descriptionStyle,
+  taglineStyle,
+} from './style/defaultStyle.js';
 import {DocusaurusLogo} from './logo.js';
 import {Footer, CenterRow} from './components/index.js';
 import {DefaultProps} from './types/index.js';
@@ -21,7 +26,12 @@ const Default = (props: DefaultProps) => {
           fontWeight: 'bold',
           justifyContent: 'center',
         }}>
-        <div>{props.title}</div>
+        <div
+          style={{
+            ...titleStyle,
+          }}>
+          {props.title}
+        </div>
       </div>
       <CenterRow>
         {logo}
@@ -39,9 +49,23 @@ const Default = (props: DefaultProps) => {
               color: 'gray',
               marginBottom: '2rem',
             }}>
-            <div>{props.description}</div>
+            <div
+              style={{
+                ...descriptionStyle,
+              }}>
+              {props.description}
+            </div>
           </div>
-          <Footer>{<div>{props.tagline}</div>}</Footer>
+          <Footer>
+            {
+              <div
+                style={{
+                  ...taglineStyle,
+                }}>
+                {props.tagline}
+              </div>
+            }
+          </Footer>
         </div>
       </CenterRow>
     </div>

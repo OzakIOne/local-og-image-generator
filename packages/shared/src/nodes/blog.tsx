@@ -1,5 +1,10 @@
 import React from 'react';
-import {containerStyle} from './style/containerStyle.js';
+import {
+  containerStyle,
+  titleStyle,
+  authorStyle,
+  authorImageStyle,
+} from './style/blogStyle.js';
 import {DocusaurusLogo} from './logo.js';
 import {AuthorImage, Footer, Header, Tags} from './components/index.js';
 import {BlogProps} from './types/index.js';
@@ -16,7 +21,13 @@ const Blog = (props: BlogProps) => {
     <div style={containerStyle}>
       <Header>
         {logo}
-        <div style={{marginLeft: '2rem'}}>{props.title}</div>
+        <div
+          style={{
+            ...titleStyle,
+            marginLeft: '2rem',
+          }}>
+          {props.title}
+        </div>
       </Header>
       <div
         style={{
@@ -30,10 +41,14 @@ const Blog = (props: BlogProps) => {
             marginLeft: '2rem',
           }}>
           <Footer>
-            {/* TODO remove size from here */}
-            <AuthorImage size={96} author={props.authorURL} />
+            <AuthorImage
+              style={{...authorImageStyle}}
+              authorURLSize={props.authorURLSize}
+              authorURL={props.authorURL}
+            />
             <div
               style={{
+                ...authorStyle,
                 display: 'flex',
                 alignItems: 'center',
                 marginLeft: '1rem',

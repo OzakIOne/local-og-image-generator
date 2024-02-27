@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {BlogTags} from '../types';
+import {BlogCenterTags} from '../types';
 
 const Tag = (props: PropsWithChildren) => (
   <div
@@ -16,20 +16,22 @@ const Tag = (props: PropsWithChildren) => (
   </div>
 );
 
-const Tags = ({tags}: {tags: BlogTags}) => {
-  const filteredTags = new Set(tags);
-
+const TagsList = ({tags}: {tags: BlogCenterTags}) => {
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'row-reverse',
-        marginTop: '2rem',
         marginRight: '2rem',
       }}>
-      {tags && [...filteredTags].map((el) => <Tag key={el}>{el}</Tag>)}
+      {tags &&
+        Object.entries(tags).map(([key, value]) => (
+          <Tag key={key}>
+            {key} · {value.toString()}
+          </Tag>
+        ))}
     </div>
   );
 };
 
-export {Tags};
+export {TagsList};

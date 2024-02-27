@@ -24,12 +24,12 @@ These are the options related to the CLI,
 
 ![Doc image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=doc&title=Doc)
 
-| Param Name    | Param Type Value    | Param Default Value         | Param Description                          | Param Required |
-| ------------- | ------------------- | --------------------------- | ------------------------------------------ | -------------- |
-| `title`       | string              | -                           | Title of the document                      | Yes            |
-| `description` | string              | `Documentation description` | Description of the document                | Optional       |
-| `logo`        | string or `'false'` | -                           | URL of the logo (false to remove the logo) | Optional       |
-| `logowidth`   | number              | `250`                       | Width of the logo                          | Optional       |
+| Param Name    | Param Type Value    | Param Default Value         | Param Description                          | Param Required | Query String Example              | CLI Example                        |
+| ------------- | ------------------- | --------------------------- | ------------------------------------------ | -------------- | --------------------------------- | ---------------------------------- |
+| `title`       | string              | -                           | Title of the document                      | Yes            | `&title=YourTitle`                | `--title YourTitle`                |
+| `description` | string              | `Documentation description` | Description of the document                | Optional       | `&description=YourDescription`    | `--description YourDescription`    |
+| `logo`        | string or `'false'` | -                           | URL of the logo (false to remove the logo) | Optional       | `&logo=https://your-logo-url.com` | `--logo https://your-logo-url.com` |
+| `logowidth`   | number              | `250`                       | Width of the logo                          | Optional       | `&logowidth=200`                  | `--logowidth 200`                  |
 
 #### Blog `blog`
 
@@ -37,14 +37,15 @@ These are the options related to the CLI,
 
 ![Blog image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=blog&title=Blog)
 
-| Param Name  | Param Type Value    | Param Default Value               | Param Description                                                      | Param Required |
-| ----------- | ------------------- | --------------------------------- | ---------------------------------------------------------------------- | -------------- |
-| `title`     | string              | -                                 | Title of the blog                                                      | Yes            |
-| `logo`      | string or `'false'` | -                                 | URL of the logo (false to remove the logo)                             | Optional       |
-| `logowidth` | number              | `150`                             | Width of the logo                                                      | Optional       |
-| `authorURL` | string (Image URL)  | `https://github.com/ozakione.png` | Link to the author's profile picture (image)                           | Optional       |
-| `author`    | string              | `ozaki`                           | Name of the author                                                     | Optional       |
-| `tags`      | string[]            | -                                 | Array of tags associated with the blog (there can't be duplicated tag) | Optional       |
+| Param Name  | Param Type Value    | Param Default Value               | Param Description                                           | Param Required | Query String Example                  | CLI Example                            |
+| ----------- | ------------------- | --------------------------------- | ----------------------------------------------------------- | -------------- | ------------------------------------- | -------------------------------------- |
+| `title`     | string              | -                                 | Title of the blog                                           | Yes            | `&title=YourTitle`                    | `--title YourTitle`                    |
+| `logo`      | string or `'false'` | -                                 | URL of the logo (false to remove the logo)                  | Optional       | `&logo=https://your-logo-url.com`     | `--logo https://your-logo-url.com`     |
+| `logowidth` | number              | `150`                             | Width of the logo                                           | Optional       | `&logowidth=200`                      | `--logowidth 200`                      |
+| `authorURL` | string (Image URL)  | `https://github.com/ozakione.png` | Link to the author's profile picture (image)                | Optional       | `&authorURL=https://author-image.com` | `--authorURL https://author-image.com` |
+| `authorURLSize`| number              | `96`                               | Size of the author's profile picture (Optional, Default: `96` | Optional       | `&authorURLSize=120`                    | `--authorURLSize 120`                   |
+| `author`    | string              | `ozaki`                           | Name of the author                                          | Optional       | `&author=AuthorName`                  | `--author AuthorName`                  |
+| `tags`      | string[]            | -                                 | Array of tags associated with the blog (no duplicated tags) | Optional       | `&tags=tag1&tags=tag2`                | `--tags tag1 --tags tag2`              |
 
 > Note: To pass an array of strings in a query parameter, you can use the following syntax: `?type=blog&title=Blog&tags=tag1&tags=tag2`
 >
@@ -60,19 +61,20 @@ These are the options related to the CLI,
 
 ![BlogTop image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=blogtop&title=Top%20title)
 
-| Param Name   | Param Type Value                                                              | Param Default Value | Param Description                          | Param Required |
-| ------------ | ----------------------------------------------------------------------------- | ------------------- | ------------------------------------------ | -------------- |
-| `title`      | string                                                                        | -                   | The title of the blog                      | Yes            |
-| `logo`       | string or `'false'`                                                           | -                   | URL of the logo (false to remove the logo) | Optional       |
-| `logowidth`  | number                                                                        | `150`               | Width of the logo                          | Optional       |
-| `text1`      | string                                                                        | `'text1'`           | Text content 1                             | Optional       |
-| `text1size`  | string                                                                        | `'2rem'`            | Font size of text1                         | Optional       |
-| `text2`      | string                                                                        | `'text2'`           | Text content 2                             | Optional       |
-| `text2size`  | string                                                                        | `'2rem'`            | Font size of text2                         | Optional       |
-| `text3`      | string                                                                        | `'text3'`           | Text content 3                             | Optional       |
-| `text3size`  | string                                                                        | `'2rem'`            | Font size of text3                         | Optional       |
-| `textalign`  | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Text alignment options                     | Optional       |
-| `titlealign` | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Title alignment options                    | Optional       |
+| Param Name         | Param Type Value                                                              | Param Default Value | Param Description                          | Param Required | Query String Example              | CLI Example                        |
+| ------------------ | ----------------------------------------------------------------------------- | ------------------- | ------------------------------------------ | -------------- | --------------------------------- | ---------------------------------- |
+| `title`            | string                                                                        | -                   | The title of the blog                      | Yes            | `&title=YourTitle`                | `--title YourTitle`                |
+| `logo`             | string or `'false'`                                                           | -                   | URL of the logo (false to remove the logo) | Optional       | `&logo=https://your-logo-url.com` | `--logo https://your-logo-url.com` |
+| `logowidth`        | number                                                                        | `150`               | Width of the logo                          | Optional       | `&logowidth=200`                  | `--logowidth 200`                  |
+| `mainContent`      | string                                                                        | `'mainContent'`     | Text content 1                             | Optional       | `&mainContent=YourMainContent`    | `--mainContent YourMainContent`    |
+| `mainContentsize`  | string                                                                        | `'2rem'`            | Font size of mainContent                   | Optional       | `&mainContentsize=1.5rem`         | `--mainContentsize 1.5rem`         |
+| `subContent`       | string                                                                        | `'subContent'`      | Text content 2                             | Optional       | `&subContent=YourSubContent`      | `--subContent YourSubContent`      |
+| `subContentsize`   | string                                                                        | `'2rem'`            | Font size of subContent                    | Optional       | `&subContentsize=1.5rem`          | `--subContentsize 1.5rem`          |
+| `extraContent`     | string                                                                        | `'extraContent'`    | Text content 3                             | Optional       | `&extraContent=YourExtraContent`  | `--extraContent YourExtraContent`  |
+| `extraContentsize` | string                                                                        | `'2rem'`            | Font size of extraContent                  | Optional       | `&extraContentsize=1.5rem`        | `--extraContentsize 1.5rem`        |
+| `textalign`        | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Text alignment options                     | Optional       | `&textalign=center`               | `--textalign center`               |
+| `titlealign`       | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Title alignment options                    | Optional       | `&titlealign=flex-start`          | `--titlealign flex-start`          |
+| `tags`             | Record<string, number>                                                        | -                   | Array of tags associated with the blog     | Optional       | `&tags[react]=1&tags[js]=3`       | `--tags tag1,tag2`                 |
 
 #### BlogCenter `blogcenter`
 
@@ -80,31 +82,32 @@ These are the options related to the CLI,
 
 ![BlogCenter image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=blogcenter&title=Center%20title)
 
-| Param Name   | Param Type Value                                                              | Param Default Value | Param Description                          | Param Required |
-| ------------ | ----------------------------------------------------------------------------- | ------------------- | ------------------------------------------ | -------------- |
-| `title`      | string                                                                        | -                   | The title of the blog                      | Yes            |
-| `logo`       | string or `'false'`                                                           | -                   | URL of the logo (false to remove the logo) | Optional       |
-| `logowidth`  | number                                                                        | `150`               | Width of the logo                          | Optional       |
-| `text1`      | string                                                                        | `'text1'`           | Text content 1                             | Optional       |
-| `text1size`  | string                                                                        | `'2rem'`            | Font size of text1                         | Optional       |
-| `text2`      | string                                                                        | `'text2'`           | Text content 2                             | Optional       |
-| `text2size`  | string                                                                        | `'2rem'`            | Font size of text2                         | Optional       |
-| `text3`      | string                                                                        | `'text3'`           | Text content 3                             | Optional       |
-| `text3size`  | string                                                                        | `'2rem'`            | Font size of text3                         | Optional       |
-| `textalign`  | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Text alignment options                     | Optional       |
-| `titlealign` | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Title alignment options                    | Optional       |
+| Param Name         | Param Type Value                                                              | Param Default Value | Param Description                          | Param Required | Query String Example              | CLI Example                        |
+| ------------------ | ----------------------------------------------------------------------------- | ------------------- | ------------------------------------------ | -------------- | --------------------------------- | ---------------------------------- |
+| `title`            | string                                                                        | -                   | The title of the blog                      | Yes            | `&title=YourTitle`                | `--title YourTitle`                |
+| `logo`             | string or `'false'`                                                           | -                   | URL of the logo (false to remove the logo) | Optional       | `&logo=https://your-logo-url.com` | `--logo https://your-logo-url.com` |
+| `logowidth`        | number                                                                        | `150`               | Width of the logo                          | Optional       | `&logowidth=200`                  | `--logowidth 200`                  |
+| `mainContent`      | string                                                                        | `'mainContent'`     | Text content 1                             | Optional       | `&mainContent=YourMainContent`    | `--mainContent YourMainContent`    |
+| `mainContentsize`  | string                                                                        | `'2rem'`            | Font size of mainContent                   | Optional       | `&mainContentsize=1.5rem`         | `--mainContentsize 1.5rem`         |
+| `subContent`       | string                                                                        | `'subContent'`      | Text content 2                             | Optional       | `&subContent=YourSubContent`      | `--subContent YourSubContent`      |
+| `subContentsize`   | string                                                                        | `'2rem'`            | Font size of subContent                    | Optional       | `&subContentsize=1.5rem`          | `--subContentsize 1.5rem`          |
+| `extraContent`     | string                                                                        | `'extraContent'`    | Text content 3                             | Optional       | `&extraContent=YourExtraContent`  | `--extraContent YourExtraContent`  |
+| `extraContentsize` | string                                                                        | `'2rem'`            | Font size of extraContent                  | Optional       | `&extraContentsize=1.5rem`        | `--extraContentsize 1.5rem`        |
+| `textalign`        | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Text alignment options                     | Optional       | `&textalign=center`               | `--textalign center`               |
+| `titlealign`       | `'center' \| 'flex-start' \| 'flex-end' \| 'space-between' \| 'space-around'` | `'center'`          | Title alignment options                    | Optional       | `&titlealign=flex-start`          | `--titlealign flex-start`          |
+| `tags`             | Record<string, number>                                                        | -                   | Array of tags associated with the blog     | Optional       | `&tags[react]=1&tags[js]=3`       | `--tags tag1:1,tag2:2`             |
 
 #### Default `default`
 
 ![Default image preview](https://local-og-image-generator-web-git-ozaki-project-ozakione.vercel.app/api/param?type=default&title=Default)
 
-| Param Name    | Param Type Value    | Param Default Value   | Param Description                           | Param Required |
-| ------------- | ------------------- | --------------------- | ------------------------------------------- | -------------- |
-| `title`       | String              | -                     | Title of the default content                | Yes            |
-| `description` | String              | `Default description` | Description of the default content          | Optional       |
-| `logo`        | string or `'false'` | -                     | URL of the logo (false to remove the logo)  | Optional       |
-| `logowidth`   | number              | `150`                 | Width of the logo                           | Optional       |
-| `tagline`     | String              | `Default tagline`     | Tagline associated with the default content | Optional       |
+| Param Name    | Param Type Value    | Param Default Value   | Param Description                           | Param Required | Query String Example              | CLI Example                        |
+| ------------- | ------------------- | --------------------- | ------------------------------------------- | -------------- | --------------------------------- | ---------------------------------- |
+| `title`       | String              | -                     | Title of the default content                | Yes            | `&title=YourTitle`                | `--title YourTitle`                |
+| `description` | String              | `Default description` | Description of the default content          | Optional       | `&description=YourDescription`    | `--description YourDescription`    |
+| `logo`        | string or `'false'` | -                     | URL of the logo (false to remove the logo)  | Optional       | `&logo=https://your-logo-url.com` | `--logo https://your-logo-url.com` |
+| `logowidth`   | number              | `150`                 | Width of the logo                           | Optional       | `&logowidth=200`                  | `--logowidth 200`                  |
+| `tagline`     | String              | `Default tagline`     | Tagline associated with the default content | Optional       | `&tagline=YourTagline`            | `--tagline YourTagline`            |
 
 ## Usage
 
@@ -119,8 +122,12 @@ pnpm cli:start doc --output ./doc.png  --title "My Title" --description "My desc
 pnpm cli:start blog --output ./blog.png  --title "My Blog" --authorURL "https://github.com/ozakione.png" --author "OzakIOne"
 pnpm cli:start default --output ./default.png  --title "Ozaki's site" --description "My website" --tagline "I love coding"
 pnpm cli:start blogtop --output ./blogtop.png  --title "Title" # and other otions
-pnpm cli:start blogcenter --output ./blogcenter.png  --title "Title" # and other otions
+pnpm cli:start blogcenter --output ./blogcenter.png  --title "Title" --tags.react '2' --tags.js '3' # and other otions
 ```
+
+## Customization
+
+You can customize the images by forking the project and modifying the css files in `./packages/shared/src/nodes/style` you can
 
 ## Deploy
 
