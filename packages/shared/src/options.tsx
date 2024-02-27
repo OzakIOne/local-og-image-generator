@@ -93,8 +93,7 @@ const blogCenter = z
       .default('center'),
     tags: blogCenterTags,
   })
-  .extend({type: z.string()})
-  .strict();
+  .extend({type: z.string()});
 
 const typeMap = {
   doc: {

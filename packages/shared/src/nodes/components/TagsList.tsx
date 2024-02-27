@@ -27,7 +27,7 @@ const TagsList = ({tags}: {tags: BlogCenterTags}) => {
       {tags &&
         Object.entries(tags).map(([key, value]) => (
           <Tag key={key}>
-            {key} · {value.toString()}
+            {key} · {value}
           </Tag>
         ))}
     </div>
