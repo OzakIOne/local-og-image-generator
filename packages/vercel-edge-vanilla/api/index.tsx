@@ -8,10 +8,6 @@ export const config = {
   runtime: 'edge',
 };
 
-// const font = fetch(
-//   new URL(`../../assets/Roboto-Regular.ttf`, import.meta.url),
-// ).then((res) => res.arrayBuffer());
-
 function parseProps(props: unknown, schema) {
   return schema.parse(props);
 }
