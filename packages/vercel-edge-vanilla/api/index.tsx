@@ -13,8 +13,6 @@ function parseProps(props: unknown, schema) {
 }
 
 export default async function handler(req: VercelRequest) {
-  // const fontData = await font;
-
   try {
     const {search} = new URL(req.url);
     const param = qs.parse(search.slice(1));
