@@ -1,0 +1,27 @@
+{
+  "name": "vercel-edge-vanilla",
+  "main": "api/index.tsx",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel",
+    "lint": "eslint --ext .tsx .",
+    "lint:fix": "eslint --ext .tsx . --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "type": "module",
+  "dependencies": {
+    "@ozaki/shared": "workspace:^",
+    "@types/qs": "^6.9.11",
+    "@types/react": "^18.2.48",
+    "@vercel/node": "^3.0.17",
+    "@vercel/og": "^0.6.2",
+    "qs": "^6.11.2"
+  },
+  "devDependencies": {
+    "vercel": "^33.1.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

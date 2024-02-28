@@ -1,0 +1,68 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:node/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "no-return-await": "error",
+    "node/no-unsupported-features/es-syntax": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "node/no-unsupported-features/node-builtins": "warn",
+    "node/no-extraneous-import": [
+      "error",
+      {
+        "allowModules": [
+          "react"
+        ]
+      }
+    ],
+    "node/no-missing-import": [
+      "off"
+    ]
+  },
+  "env": {
+    "node": true
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx",
+        ".js"
+      ]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": [
+          "apps/*/tsconfig.json",
+          "libs/*/tsconfig.json"
+        ]
+      },
+      "alias": {
+        "map": [
+          [
+            "@ozaki",
+            "./packages"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+  }
+}

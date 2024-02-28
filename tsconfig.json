@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "noEmit": true,
+    "strict": true,
+    "paths": {
+      "@ozaki/shared": [
+        "packages/shared/index.ts"
+      ],
+    },
+    "skipDefaultLibCheck": true
+  }
+}

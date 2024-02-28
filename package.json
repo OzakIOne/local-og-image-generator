@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@types/node": "^20.11.21",
+    "@types/react": "^18.2.60",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-node": "^11.1.0",
+    "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^7.1.0",
+    "turbo": "^1.12.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "name": "ozaki",
+  "scripts": {
+    "cli:dev": "pnpm --filter ./packages/cli run watch",
+    "cli:start": "pnpm --filter ./packages/cli run start",
+    "lint": "pnpm --stream -r run lint",
+    "lint:fix": "pnpm --stream -r run lint:fix",
+    "format": "pnpm --stream -r run format",
+    "format:fix": "pnpm --stream -r run format:fix",
+    "vercel:build": "pnpm --filter ./packages/vercel-edge run build",
+    "vercel:dev": "pnpm --filter ./packages/vercel-edge run dev",
+    "vercel:start": "pnpm --filter ./packages/vercel-edge run start",
+    "build": "turbo run build"
+  },
+  "version": "1.0.0"
+}
